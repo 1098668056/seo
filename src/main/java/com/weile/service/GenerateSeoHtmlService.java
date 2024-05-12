@@ -13,5 +13,5 @@ public interface GenerateSeoHtmlService {
      * 生成seo单页html
      * @param seoHtml
      */
-    void generateSeoHtml(Template configuration, SeoHtml seoHtml);
+     void generateSeoHtml(SeoHtml seoHtml);
 }
