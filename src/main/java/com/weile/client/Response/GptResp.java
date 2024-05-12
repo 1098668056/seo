@@ -1,7 +1,7 @@
 /**
   * Copyright 2024 json.cn 
   */
-package com.weile.Response;
+package com.weile.client.Response;
 import java.util.List;
 
 /**

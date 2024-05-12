@@ -1,4 +1,4 @@
-package com.weile.request;
+package com.weile.client.request;
 
 /**
  * @Author: xwl

@@ -1,7 +1,7 @@
 /**
   * Copyright 2024 json.cn 
   */
-package com.weile.Response;
+package com.weile.client.Response;
 
 /**
  * Auto-generated: 2024-05-12 18:37:4
