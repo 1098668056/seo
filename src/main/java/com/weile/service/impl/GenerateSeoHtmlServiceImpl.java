@@ -1,7 +1,8 @@
-package com.weile.service;
+package com.weile.service.impl;
 
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
+import com.weile.service.GenerateSeoHtmlService;
 import freemarker.template.Template;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
