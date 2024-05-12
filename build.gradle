@@ -19,7 +19,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.fasterxml.jackson:jackson-bom:2.11.4'
-    implementation 'cn.hutool:hutool-all:5.7.16'
+    implementation 'cn.hutool:hutool-all:5.8.27'
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
