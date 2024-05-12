@@ -18,6 +18,7 @@ public class GptResp {
     private String model;
     private List<Choices> choices;
     private String system_fingerprint;
+    private Usage usage;
     public void setId(String id) {
          this.id = id;
      }
@@ -61,4 +62,11 @@ public class GptResp {
          return system_fingerprint;
      }
 
+    public Usage getUsage() {
+        return usage;
+    }
+
+    public void setUsage(Usage usage) {
+        this.usage = usage;
+    }
 }
