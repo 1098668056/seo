@@ -22,15 +22,16 @@ import java.util.*;
  * @Description:
  **/
 public class ProcessGptService {
-    @Value(value = "gpt.url")
-    private   static String gptUrl = "https://oa.api2d.net/v1/chat/completions";
-    @Value(value = "gpt.token")
-    private static String gptToken ="Bearer fk190313-KdmEbwOxr9rUXQCkgcggHYKTFNtZqbbV";
+    @Value(value = "${gpt.url}")
+    private  String gptUrl;
+    @Value(value = "${gpt.token}")
+    private  String gptToken;
     @Resource
     private GenerateSeoHtmlService generateSeoHtmlService;
-    public static void  processGpt(){
+    public  void  processGpt(){
         ContentRequest contentRequest = new ContentRequest();
         contentRequest.setRole("user");
+        //todo 查询数据库词库数据表通过生成TDK
         contentRequest.setContent("生成一篇卡盟200字文章");
         GptParamRequest gptParamRequest = new GptParamRequest();
         gptParamRequest.setMessages(Collections.singletonList(contentRequest));
@@ -41,13 +42,14 @@ public class ProcessGptService {
         GptResp gptResp = JSON.parseObject(respContent.body(), GptResp.class);
         for (Choices choice : gptResp.getChoices()) {
             String content = choice.getMessage().getContent();
-            System.out.println(content);
+            SeoHtml seoHtml = new SeoHtml();
+            seoHtml.setTitle("");
+            seoHtml.setKeywords("");
+            seoHtml.setContent(content);
+            seoHtml.setUrl("");
+            generateSeoHtmlService.generateSeoHtml(seoHtml);
         }
 
-    }
-
-    public static void main(String[] args) {
-        processGpt();
     }
 
 
