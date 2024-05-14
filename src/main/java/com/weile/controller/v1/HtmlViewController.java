@@ -1,9 +1,12 @@
 package com.weile.controller.v1;
 
+import com.weile.service.HtmlViewService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import javax.annotation.Resource;
 
 /**
  * @Author: xwl
@@ -12,8 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
  **/
 @Controller
 public class HtmlViewController {
+    @Resource
+    private HtmlViewService htmlViewService;
     @GetMapping("/seo/{path}")
     public String getHtml(Model model, @PathVariable (value = "path") String url){
         return url;
+    }
+    @GetMapping(value = "/html")
+    public Boolean generateSeoHtml(@RequestParam("url") String url, @RequestParam("keyWord") String keyWord){
+       return htmlViewService.onlyHtml(url,keyWord);
     }
 }

@@ -77,10 +77,9 @@
         <!-- end content-bg -->
         <!-- begin container -->
         <div class="container home-content">
-            <h1>欢迎来到 <a href="https://upr-e.cn/archives/161960.html">自助业务平台</a></h1>
-            <h3>主营各类刷赞业务,双击播放量粉丝平台,QQ名片赞空间业务等上百种业务！</h3>
-            <h4>
-                支持多种支付方式：支付宝、QQ钱包、微信、财付通支付，全网最大最强口碑最好的业务网站！<br>
+            <h1>欢迎来到 <a href="https://upr-e.cn/archives/161960.html">${title}</a></h1>
+            <h3>${content}</h3>
+            <h4>${keywords}<br>
                 <a href="JavaScript:;" style="line-height: 45px;">百度诚信平台-口碑好-你值得信赖！</a>
             </h4>
             <a href="https://zan.qian-tao.xyz/m/" class="btn btn-theme">点击进入</a> <a href="https://zan.qian-tao.xyz/m/" class="btn btn-outline">立即下单</a><br>
@@ -93,7 +92,7 @@
     <div id="service" class="content" data-scrollview="true">
         <!-- begin container -->
         <div class="container">
-            <h2 class="content-title">为什么选择自助下单app软件 - 云商城24小时自助下单平台_免费领取50说说赞网址网站？</h2>
+            <h2 class="content-title">${descriptions}</h2>
             <p class="content-desc">${content}</p>
             <!-- begin row -->
             <div class="row">
@@ -114,7 +113,7 @@
                         <div class="icon bg-theme bounceIn contentAnimated finishAnimated" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-paint-brush"></i></div>
                         <div class="info">
                             <h4 class="title">平台简介</h4>
-                            <p class="desc">本站是一个8年诚信网站，旗下代理几万人，扶持大学生创业，欢迎前来合作！</p>
+                            <p class="desc">${descriptions}</p>
                         </div>
                     </div>
                 </div>
