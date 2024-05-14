@@ -1,14 +1,19 @@
 package com.weile.service.impl;
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.GenerateSeoHtmlService;
+import freemarker.template.Configuration;
 import freemarker.template.Template;
-import org.springframework.scheduling.annotation.Async;
+import org.aspectj.apache.bcel.util.ClassPath;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
+import javax.persistence.Cache;
 import java.io.*;
+import java.net.CacheRequest;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,40 +23,42 @@ import java.util.Map;
  * @Description: 生成seo-html内容
  **/
 @Service
-@Transactional(rollbackFor = Exception.class)
 public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
     private static final String TEMPLATE_PATH = "/SeoHtml.ftl";
-    private static final String OUTPUT_PATH = "/output.html";
+    private static final String OUTPUT_PATH = "/static/output.html";
 
     @Resource
     private  SeoHtmlRepository seoHtmlRepository;
-    @Resource
-    private Template configuration;
+    @Autowired
+    private Configuration configuration;
 
     /**
      * 生成seo单页html
      *
      * @param seoHtml
      */
-    @Async
+
     @Override
     public void generateSeoHtml(SeoHtml seoHtml) {
         // 使用try-with-resources语句自动管理资源
         try {
-            Template template = configuration.getConfiguration().getTemplate(TEMPLATE_PATH);
-            seoHtmlRepository.save(seoHtml);
+            Template template = configuration.getTemplate(TEMPLATE_PATH);
+//            seoHtmlRepository.save(seoHtml);
 
             Map<String, Object> params = new HashMap<>(16);
             params.put("title", seoHtml.getTitle());
-            params.put("description", seoHtml.getDescription());
+            params.put("descriptions", seoHtml.getDescription());
             params.put("keywords", seoHtml.getKeywords());
             params.put("content", seoHtml.getContent());
-
-            File outputFile = new File(getClass().getResource(OUTPUT_PATH).toURI());
+            ClassPathResource classPathResource = new ClassPathResource("/static");
+            String absolutePath = classPathResource.getAbsolutePath();
+            //文件生成地址
+            File outputFile = new File(absolutePath+seoHtml.getUrl());
             try (Writer writer = new FileWriter(outputFile)) {
                 template.process(params, writer);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             // 由于日志已经记录了异常信息，这里可以选择不重新抛出异常，或者抛出一个自定义的异常来处理业务逻辑。
 //             throw new CustomException("Error processing SEO HTML.", e);
         }

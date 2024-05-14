@@ -5,8 +5,8 @@
 
     <title>${title}</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta name="keywords" content="${keyWords}">
-    <meta name="description" content="${description}">
+    <meta name="keywords" content="${keywords}">
+    <meta name="description" content="${descriptions}">
     <meta content="123" name="author">
     <script src="./template/hm.js"></script>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->

@@ -23,8 +23,13 @@ dependencies {
     implementation 'io.github.qingmo:fastjson-replacement:1.0.3'
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'junit:junit:4.12'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+//清空输入的out目录
+task cleanOut(type: Delete) {
+    delete 'out'
 }
