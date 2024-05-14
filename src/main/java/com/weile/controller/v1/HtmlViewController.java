@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
 
 /**
@@ -22,7 +24,10 @@ public class HtmlViewController {
         return url;
     }
     @GetMapping(value = "/html")
-    public Boolean generateSeoHtml(@RequestParam("url") String url, @RequestParam("keyWord") String keyWord){
-       return htmlViewService.onlyHtml(url,keyWord);
+    @ResponseBody
+    public String generateSeoHtml(@RequestParam("url") String url, @RequestParam("keyWord") String keyWord){
+        System.out.println(keyWord);
+        htmlViewService.onlyHtml(url,keyWord);
+       return "success";
     }
 }

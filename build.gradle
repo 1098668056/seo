@@ -21,9 +21,19 @@ dependencies {
     implementation 'com.fasterxml.jackson:jackson-bom:2.11.4'
     implementation 'cn.hutool:hutool-all:5.8.27'
     implementation 'io.github.qingmo:fastjson-replacement:1.0.3'
+    implementation 'io.minio:minio:8.5.10'
+    implementation 'com.google.guava:guava:30.1-jre'
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.12'
+    // 添加OkHttp依赖
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
+    // 如果你的项目还需要其他版本的OkHttp，比如用于其他库，可以使用下面的排除机制
+    // 这将确保OkHttp的特定版本只被MinIO SDK使用
+    implementation ('io.minio:minio:8.5.10') {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
 }
 
 tasks.named('test') {

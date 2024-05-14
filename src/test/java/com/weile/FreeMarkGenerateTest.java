@@ -1,6 +1,7 @@
 package com.weile;
 
 import com.weile.domain.SeoHtml;
+import com.weile.service.FileStorageService;
 import com.weile.service.GenerateSeoHtmlService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,8 @@ import javax.annotation.Resource;
 public class FreeMarkGenerateTest {
     @Resource
     private GenerateSeoHtmlService generateSeoHtmlService;
+    @Resource
+    private FileStorageService fileStorageService;
     @Test
      public void generateHtml(){
         SeoHtml seoHtml = new SeoHtml();
