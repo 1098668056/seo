@@ -1,5 +1,5 @@
-# 使用官方Java 8镜像作为基础镜像
-FROM openjdk:8-jdk-alpine
+# 使用官方Java 11镜像作为基础镜像
+FROM openjdk:11
  
 # 复制本地的Java应用到容器内
 COPY ./weile-seo-0.0.1-SNAPSHOT.jar app/app.jar
