@@ -20,6 +20,7 @@ public class SeoHtml implements Serializable {
     private String keywords;
     private String content;
     private String url;
+    private String fileName;
 
     public Long getId() {
         return id;
@@ -69,6 +70,27 @@ public class SeoHtml implements Serializable {
         this.url = url;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public SeoHtml(Long id, String title, String description, String keywords, String content, String url, String fileName) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.keywords = keywords;
+        this.content = content;
+        this.url = url;
+        this.fileName = fileName;
+    }
+
+    public SeoHtml() {
+    }
+
     @Override
     public String toString() {
         return "SeoHtml{" +
@@ -78,6 +100,7 @@ public class SeoHtml implements Serializable {
                 ", keywords='" + keywords + '\'' +
                 ", content='" + content + '\'' +
                 ", url='" + url + '\'' +
+                ", fileName='" + fileName + '\'' +
                 '}';
     }
 }
