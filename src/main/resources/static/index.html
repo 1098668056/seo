@@ -1,6 +1,217 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面布局</title>
+    <style>
+        /* 最上方的div */
+        .header {
+            width: 100%;
+            background-color: white;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            margin-left: 20px;
+        }
+
+        .buttons {
+            margin-right: 20px;
+        }
+
+        .button {
+            background-color: #555;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* 整体容器 */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        /* 轮播图容器 */
+        .slideshow-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* 右侧竖直的div */
+        .sidebar {
+            width: 30%;
+            margin-left: 20px;
+        }
+
+        .sidebar div {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar div h2 {
+            margin-top: 0;
+        }
+
+        /* 轮播图下方的div */
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .additional-item {
+            flex: 1;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .additional-item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .additional-item .content {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        .additional-item .content h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
 <body>
-<h1>hello word!!!</h1>
-<p>this is a html page</p>
+
+<div class="header">
+    <div class="logo">Your Logo</div>
+    <div class="buttons">
+        <button class="button">Button 1</button>
+        <button class="button">Button 2</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="slideshow-container">
+        <div class="slide fade">
+            < img src="img1.jpg" alt="Slide 1">
+        </div>
+
+        <div class="slide fade">
+            < img src="img2.jpg" alt="Slide 2">
+        </div>
+
+        <div class="slide fade">
+            < img src="img3.jpg" alt="Slide 3">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a >
+        <a class="next" onclick="plusSlides(1)">❯</a >
+    </div>
+
+    <div class="content-section">
+        <div class="additional-item">
+            < img src="image1.jpg" alt="Image 1">
+            <div class="content">
+                <h3>Title 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod magna vitae justo facilisis, in tincidunt arcu vestibulum.</p >
+                Read More
+            </div>
+        </div>
+
+        <div class="additional-item">
+            < img src="image2.jpg" alt="Image 2">
+            <div class="content">
+                <h3>Title 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod magna vitae justo facilisis, in tincidunt arcu vestibulum.</p >
+                Read More
+            </div>
+        </div>
+
+        <div class="additional-item">
+            < img src="image3.jpg" alt="Image 3">
+            <div class="content">
+                <h3>Title 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod magna vitae justo facilisis, in tincidunt arcu vestibulum.</p >
+                Read More
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slides[slideIndex-1].style.display = "block";
+    }
+</script>
+
 </body>
 </html>
