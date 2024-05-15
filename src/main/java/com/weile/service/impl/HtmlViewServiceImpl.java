@@ -19,15 +19,14 @@ public class HtmlViewServiceImpl implements HtmlViewService {
     @Resource
     GptClient gptClient;
     @Override
-    public boolean onlyHtml(String fileName,String keyWords) {
+    public String onlyHtml(String fileName,String keyWords) {
         SeoHtml seoHtml = new SeoHtml();
         String content = gptClient.processGpt(keyWords, 200);
-        seoHtml.setUrl("/"+fileName);
+        seoHtml.setUrl(fileName);
         seoHtml.setDescription(content);
         seoHtml.setTitle(keyWords);
         seoHtml.setContent(content);
         seoHtml.setKeywords(keyWords);
-        generateSeoHtmlService.generateSeoHtml(seoHtml);
-        return true;
+        return generateSeoHtmlService.generateSeoHtml(seoHtml);
     }
 }

@@ -1,6 +1,7 @@
 package com.weile.service.impl;
 
 import cn.hutool.core.io.resource.ClassPathResource;
+import com.weile.config.MinIOConfigProperties;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.FileStorageService;
@@ -30,6 +31,8 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
     private Configuration configuration;
     @Resource
     private FileStorageService fileStorageService;
+    @Resource
+    private MinIOConfigProperties minIOConfigProperties;
     /**
      * 生成seo单页html
      *
@@ -37,8 +40,9 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
      */
 
     @Override
-    public void generateSeoHtml(SeoHtml seoHtml) {
+    public String generateSeoHtml(SeoHtml seoHtml) {
         // 使用try-with-resources语句自动管理资源
+        String url = "";
         try {
             Template template = configuration.getTemplate(TEMPLATE_PATH);
 //            seoHtmlRepository.save(seoHtml);
@@ -51,13 +55,13 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
             StringWriter out = new StringWriter();
             template.process(params, out);
             InputStream in = new ByteArrayInputStream(out.toString().getBytes());
-            String url = fileStorageService.uploadHtmlFile("", seoHtml.getUrl() + ".html", in);
-            System.out.println("url = " + url);
-
+            url = fileStorageService.uploadHtmlFile("", seoHtml.getUrl() + ".html", in);
+            url = url.replace(minIOConfigProperties.getReadPath(),minIOConfigProperties.getAliasPath());
         } catch (Exception e) {
             e.printStackTrace();
             // 由于日志已经记录了异常信息，这里可以选择不重新抛出异常，或者抛出一个自定义的异常来处理业务逻辑。
 //             throw new CustomException("Error processing SEO HTML.", e);
         }
+        return url;
 }
 }

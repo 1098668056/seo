@@ -7,5 +7,5 @@ package com.weile.service;
  * @Description:
  **/
 public interface HtmlViewService {
-    boolean onlyHtml(String fileName,String keyWords);
+    String onlyHtml(String fileName,String keyWords);
 }

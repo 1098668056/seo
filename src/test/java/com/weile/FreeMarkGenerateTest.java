@@ -30,7 +30,7 @@ public class FreeMarkGenerateTest {
         seoHtml.setTitle("testTitle");
         seoHtml.setContent("testContent");
         seoHtml.setDescription("testDescription");
-        seoHtml.setUrl("2");
+        seoHtml.setUrl("4");
         generateSeoHtmlService.generateSeoHtml(seoHtml);
     }
 }

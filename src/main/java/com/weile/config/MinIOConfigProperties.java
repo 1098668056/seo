@@ -14,13 +14,15 @@ public class MinIOConfigProperties implements Serializable {
     private String bucket;
     private String endpoint;
     private String readPath;
+    private String aliasPath;
 
-    public MinIOConfigProperties(String accessKey, String secretKey, String bucket, String endpoint, String readPath) {
+    public MinIOConfigProperties(String accessKey, String secretKey, String bucket, String endpoint, String readPath, String aliasPath) {
         this.accessKey = accessKey;
         this.secretKey = secretKey;
         this.bucket = bucket;
         this.endpoint = endpoint;
         this.readPath = readPath;
+        this.aliasPath = aliasPath;
     }
 
     public String getAccessKey() {
@@ -61,6 +63,14 @@ public class MinIOConfigProperties implements Serializable {
 
     public void setReadPath(String readPath) {
         this.readPath = readPath;
+    }
+
+    public String getAliasPath() {
+        return aliasPath;
+    }
+
+    public void setAliasPath(String aliasPath) {
+        this.aliasPath = aliasPath;
     }
 
     public MinIOConfigProperties() {

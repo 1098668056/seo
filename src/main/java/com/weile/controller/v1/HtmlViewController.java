@@ -19,15 +19,15 @@ import javax.annotation.Resource;
 public class HtmlViewController {
     @Resource
     private HtmlViewService htmlViewService;
+    @Deprecated
     @GetMapping("/seo/{path}")
     public String getHtml(Model model, @PathVariable (value = "path") String url){
         return url;
     }
-    @GetMapping(value = "/html")
+    @GetMapping(value = "/html/{url}/{key}")
     @ResponseBody
-    public String generateSeoHtml(@RequestParam("url") String url, @RequestParam("keyWord") String keyWord){
+    public String generateSeoHtml(@PathVariable("url") String url, @PathVariable("key") String keyWord){
         System.out.println(keyWord);
-        htmlViewService.onlyHtml(url,keyWord);
-       return "success";
+        return htmlViewService.onlyHtml(url,keyWord);
     }
 }
