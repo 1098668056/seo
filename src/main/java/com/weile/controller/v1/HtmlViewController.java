@@ -24,10 +24,10 @@ public class HtmlViewController {
     public String getHtml(Model model, @PathVariable (value = "path") String url){
         return url;
     }
-    @GetMapping(value = "/html/{url}/{key}")
+    @GetMapping(value = "/html/{fileName}/{key}")
     @ResponseBody
-    public String generateSeoHtml(@PathVariable("url") String url, @PathVariable("key") String keyWord){
+    public String generateSeoHtml(@PathVariable("fileName") String fileName, @PathVariable("key") String keyWord){
         System.out.println(keyWord);
-        return htmlViewService.onlyHtml(url,keyWord);
+        return htmlViewService.onlyHtml(fileName,keyWord);
     }
 }

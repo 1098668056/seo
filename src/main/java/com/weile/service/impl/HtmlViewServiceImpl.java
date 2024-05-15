@@ -23,6 +23,7 @@ public class HtmlViewServiceImpl implements HtmlViewService {
         SeoHtml seoHtml = new SeoHtml();
         String content = gptClient.processGpt(keyWords, 200);
         seoHtml.setUrl(fileName);
+        seoHtml.setFileName(fileName);
         seoHtml.setDescription(content);
         seoHtml.setTitle(keyWords);
         seoHtml.setContent(content);

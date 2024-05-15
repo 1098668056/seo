@@ -55,7 +55,7 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
             StringWriter out = new StringWriter();
             template.process(params, out);
             InputStream in = new ByteArrayInputStream(out.toString().getBytes());
-            url = fileStorageService.uploadHtmlFile("", seoHtml.getUrl() + ".html", in);
+            url = fileStorageService.uploadHtmlFile("", seoHtml.getFileName() + ".html", in);
             url = url.replace(minIOConfigProperties.getReadPath(),minIOConfigProperties.getAliasPath());
         } catch (Exception e) {
             e.printStackTrace();
