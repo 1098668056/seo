@@ -1,6 +1,7 @@
 package com.weile.service.impl;
 
 import cn.hutool.core.io.resource.ClassPathResource;
+import com.weile.client.BaiduSiteClient;
 import com.weile.config.MinIOConfigProperties;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
@@ -33,6 +34,8 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
     private FileStorageService fileStorageService;
     @Resource
     private MinIOConfigProperties minIOConfigProperties;
+    @Resource
+    private BaiduSiteClient baiduSiteClient;
     /**
      * 生成seo单页html
      *
@@ -57,6 +60,8 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
             InputStream in = new ByteArrayInputStream(out.toString().getBytes());
             url = fileStorageService.uploadHtmlFile("", seoHtml.getFileName() + ".html", in);
             url = url.replace(minIOConfigProperties.getReadPath(),minIOConfigProperties.getAliasPath());
+
+            baiduSiteClient.submitUrl(url);
         } catch (Exception e) {
             e.printStackTrace();
             // 由于日志已经记录了异常信息，这里可以选择不重新抛出异常，或者抛出一个自定义的异常来处理业务逻辑。
