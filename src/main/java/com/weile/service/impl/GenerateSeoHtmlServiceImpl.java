@@ -1,7 +1,8 @@
 package com.weile.service.impl;
 
-import cn.hutool.core.io.resource.ClassPathResource;
+
 import com.weile.client.BaiduSiteClient;
+import com.weile.config.ApiException;
 import com.weile.config.MinIOConfigProperties;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
@@ -48,7 +49,6 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
         String url = "";
         try {
             Template template = configuration.getTemplate(TEMPLATE_PATH);
-//            seoHtmlRepository.save(seoHtml);
 
             Map<String, Object> params = new HashMap<>(16);
             params.put("title", seoHtml.getTitle());
@@ -58,14 +58,21 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
             StringWriter out = new StringWriter();
             template.process(params, out);
             InputStream in = new ByteArrayInputStream(out.toString().getBytes());
-            url = fileStorageService.uploadHtmlFile("", seoHtml.getFileName() + ".html", in);
+            try {
+                url = fileStorageService.uploadHtmlFile("", seoHtml.getFileName() + ".html", in);
+            } catch (Exception e) {
+                throw new ApiException("minio上传失败");
+            }
             url = url.replace(minIOConfigProperties.getReadPath(),minIOConfigProperties.getAliasPath());
-
-            baiduSiteClient.submitUrl(url);
+            try {
+                baiduSiteClient.submitUrl(url);
+            } catch (Exception e) {
+                throw new ApiException("百度提交失败");
+            }
+            seoHtml.setUrl(url);
+            seoHtmlRepository.save(seoHtml);
         } catch (Exception e) {
-            e.printStackTrace();
-            // 由于日志已经记录了异常信息，这里可以选择不重新抛出异常，或者抛出一个自定义的异常来处理业务逻辑。
-//             throw new CustomException("Error processing SEO HTML.", e);
+            throw new ApiException("生成静态文件失败");
         }
         return url;
 }

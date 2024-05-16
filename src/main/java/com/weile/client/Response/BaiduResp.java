@@ -14,6 +14,9 @@ public class BaiduResp {
         this.success = success;
     }
 
+    public BaiduResp() {
+    }
+
     public Long getRemain() {
         return remain;
     }

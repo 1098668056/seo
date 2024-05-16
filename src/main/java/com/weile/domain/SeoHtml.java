@@ -1,8 +1,6 @@
 package com.weile.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -14,6 +12,7 @@ import java.io.Serializable;
 @Table(name = "html")
 public class SeoHtml implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
