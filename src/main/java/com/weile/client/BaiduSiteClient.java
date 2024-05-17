@@ -8,5 +8,10 @@ import java.util.concurrent.CompletableFuture;
  * @Description:
  **/
 public interface BaiduSiteClient {
+    /**
+     *
+     * @param url 生成url链接
+     * @return 异步返回是否提交成功
+     */
     public CompletableFuture<Boolean> submitUrl(String url);
 }

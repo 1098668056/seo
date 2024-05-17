@@ -26,8 +26,6 @@ import java.util.Map;
 @Service
 public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
     private static final String TEMPLATE_PATH = "/SeoHtml.ftl";
-    private static final String OUTPUT_PATH = "/static/output.html";
-
     @Resource
     private  SeoHtmlRepository seoHtmlRepository;
     @Autowired
