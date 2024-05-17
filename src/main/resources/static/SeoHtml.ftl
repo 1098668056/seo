@@ -78,7 +78,7 @@
         <!-- begin container -->
         <div class="container home-content">
             <h1>欢迎来到 <a href="https://upr-e.cn/archives/161960.html">${title}</a></h1>
-            <h3>${content}</h3>
+            <h3>${descriptions}</h3>
             <h4>${keywords}<br>
                 <a href="JavaScript:;" style="line-height: 45px;">百度诚信平台-口碑好-你值得信赖！</a>
             </h4>
