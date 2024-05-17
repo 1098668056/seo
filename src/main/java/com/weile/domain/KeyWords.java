@@ -16,16 +16,16 @@ public class KeyWords implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String keys;
+    private String keyName;
     private int useCount;
     private int score;
 
     public KeyWords() {
     }
 
-    public KeyWords(Long id, String keys, int useCount, int score) {
+    public KeyWords(Long id, String keyName, int useCount, int score) {
         this.id = id;
-        this.keys = keys;
+        this.keyName = keyName;
         this.useCount = useCount;
         this.score = score;
     }
@@ -38,12 +38,12 @@ public class KeyWords implements Serializable {
         this.id = id;
     }
 
-    public String getKeys() {
-        return keys;
+    public String getKeyName() {
+        return keyName;
     }
 
-    public void setKeys(String keys) {
-        this.keys = keys;
+    public void setKeyName(String keyName) {
+        this.keyName = keyName;
     }
 
     public int getUseCount() {
