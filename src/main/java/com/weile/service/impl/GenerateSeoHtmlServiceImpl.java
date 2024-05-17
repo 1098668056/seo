@@ -2,7 +2,6 @@ package com.weile.service.impl;
 
 
 import com.weile.client.BaiduSiteClient;
-import com.weile.config.ApiException;
 import com.weile.config.MinIOConfigProperties;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
@@ -12,6 +11,8 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 import java.io.*;
 import java.util.HashMap;
@@ -42,13 +43,17 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
      *
      * @param seoHtml
      */
-
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public String generateSeoHtml(SeoHtml seoHtml) {
         // 使用try-with-resources语句自动管理资源
         String url = "";
+
+        Template template = null;
+
         try {
-            Template template = configuration.getTemplate(TEMPLATE_PATH);
+            template = configuration.getTemplate(TEMPLATE_PATH);
+
 
             Map<String, Object> params = new HashMap<>(16);
             params.put("title", seoHtml.getTitle());
@@ -56,24 +61,21 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
             params.put("keywords", seoHtml.getKeywords());
             params.put("content", seoHtml.getContent());
             StringWriter out = new StringWriter();
+
             template.process(params, out);
+
             InputStream in = new ByteArrayInputStream(out.toString().getBytes());
-            try {
-                url = fileStorageService.uploadHtmlFile("", seoHtml.getFileName() + ".html", in);
-            } catch (Exception e) {
-                throw new ApiException("minio上传失败");
-            }
-            url = url.replace(minIOConfigProperties.getReadPath(),minIOConfigProperties.getAliasPath());
-            try {
-                baiduSiteClient.submitUrl(url);
-            } catch (Exception e) {
-                throw new ApiException("百度提交失败");
-            }
-            seoHtml.setUrl(url);
-            seoHtmlRepository.save(seoHtml);
+
+            url = fileStorageService.uploadHtmlFile("", seoHtml.getFileName() + ".html", in);
+
+            url = url.replace(minIOConfigProperties.getReadPath(), minIOConfigProperties.getAliasPath());
         } catch (Exception e) {
-            throw new ApiException("生成静态文件失败");
+            throw new RuntimeException(e);
         }
+
+        baiduSiteClient.submitUrl(url);
+        seoHtml.setUrl(url);
+        seoHtmlRepository.save(seoHtml);
         return url;
-}
+    }
 }

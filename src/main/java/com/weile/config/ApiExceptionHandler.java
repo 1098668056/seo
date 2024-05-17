@@ -3,7 +3,9 @@ package com.weile.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 2024/5/16 23:34
  * @Description:
  **/
+@RestControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * 简单全局异常返回
