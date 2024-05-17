@@ -1,217 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面布局</title>
-    <style>
-        /* 最上方的div */
-        .header {
-            width: 100%;
-            background-color: white;
-            padding: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            margin-left: 20px;
-        }
-
-        .buttons {
-            margin-right: 20px;
-        }
-
-        .button {
-            background-color: #555;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        /* 整体容器 */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            margin-top: 20px;
-        }
-
-        /* 轮播图容器 */
-        .slideshow-container {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .slide {
-            display: none;
-        }
-
-        .slide img {
-            width: 100%;
-            height: auto;
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .prev {
-            left: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        /* 右侧竖直的div */
-        .sidebar {
-            width: 30%;
-            margin-left: 20px;
-        }
-
-        .sidebar div {
-            background-color: #f2f2f2;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .sidebar div h2 {
-            margin-top: 0;
-        }
-
-        /* 轮播图下方的div */
-        .content-section {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .additional-item {
-            flex: 1;
-            margin-right: 20px;
-            margin-bottom: 20px;
-        }
-
-        .additional-item img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .additional-item .content {
-            background-color: #f2f2f2;
-            padding: 10px;
-        }
-
-        .additional-item .content h3 {
-            margin-top: 0;
-        }
-    </style>
-</head>
-<body>
-
-<div class="header">
-    <div class="logo">Your Logo</div>
-    <div class="buttons">
-        <button class="button">Button 1</button>
-        <button class="button">Button 2</button>
-    </div>
-</div>
-
-<div class="container">
-    <div class="slideshow-container">
-        <div class="slide fade">
-            < img src="img1.jpg" alt="Slide 1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title> - 卡盟排行榜</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="//s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//s1.pstatp.com/cdn/expire-1-M/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//s1.pstatp.com/cdn/expire-1-M/jquery/1.8.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://sun-mu.cn/public/assets/index/css/dux.css">
+    <script src="//s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></script>
+<body class="home blog">
+<div id="wrap">
+    <header class="header">
+        <div class="container">
+            <div class="brand"><a href=""><img src="https://sun-mu.cn/tu/logo.png" width="100" height="50"></a></div>
+            <ul class="site-nav site-navbar">
+                <li class="item ">
+                    <a href="./" > <i class='fa fa-home'></i> 首页</a></a>
+                </li>
+                <li class="item current">
+                    <a href="./index.php?mod=article" ><i class='fa fa-list'></i> 文章列表</a></a>
+                </li>
+            </ul>
+            <div class="topbar">
+                <ul class="site-nav topmenu">
+                    <li> <a href="#">关于本站 <i class="fa fa-angle-down"></i></a>
+                        <ul class="sub-menu">
+                            <li><a rel="external nofollow" href="https://wpa.qq.com/msgrd?v=3&uin=3455663824&site=qq&menu=yes" target="blank"><i class="fa fa-qq"></i> QQ</a></li>
+                            <li><a rel="external nofollow" onclick="layer.msg('微信号：')" target="blank"><i class="fa fa-weixin"></i> 微信</a></li></ul></ul>
+            </div>
+            <div onclick="wapDh();">
+                <i class="fa fa-bars m-icon-nav"></i>
+            </div>
         </div>
-
-        <div class="slide fade">
-            < img src="img2.jpg" alt="Slide 2">
+    </header><section class="container">
+    <div class="content-wrap">
+        <div class="content">
+            <div id="homeslider" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators"><li data-target="#homeslider" data-slide-to="0" class="active"></li></ol>
+                <div class="carousel-inner" role="listbox"><div class="item active">
+                    <a target="_blank" href="/public/assets/index/images/img5.png">
+                        <img src=" https://sun-mu.cn/tu/1.png  "  style=" height:300px;">
+                    </a>
+                </div>				</div>
+                <a class="left carousel-control" href="#homeslider" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a><a class="right carousel-control" href="#homeslider" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="content_catag_container"><h2 class="content_catag_title isKeywords font_title">文章链接</h2><p>卡盟网【sun-mu.cn】是十大卡盟排行榜官方平台,集2024年口碑信誉好的卡盟平台,欢迎卡盟站长在卡盟排行榜中投放广告.</p></div><article class="excerpt excerpt-1">
+            <p class="focus"><a class="thumbnail" href="./23866.html">
+                <span class="item">
+                    <span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span>
+                </span></a></p>
+            <header><a class="cat" href="./index.php?class=">文章</a>
+                <h2><a href="./23866.html" title="夏别代网刷下单 ">夏别代网刷下单 </a></h2></header><p class="meta"><time><i class="fa fa-clock-o"></i>2024-05-06 23:41:04</time><span class="pv"><i class="fa fa-eye"></i>阅读(99+)</span><span class="pc"><i class="fa fa-comments-o"></i>评论(<span class="cy_cmt_count">9+</span>)</span></p>
+            <p class="note">夏别代网刷下单,岳帅吖自助下单平台,快手刷小红心软件,代刷快手推广</p></article><article class="excerpt excerpt-1">
+            <div th:each="seoHtml : ${seoHtmlList}" class="content_catag_container">
+                <p class="focus">
+                    <a class="thumbnail" th:href="@{${seoHtml.url}}">
+            <span class="item">
+                <span class="thumb-span"><span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span>
+            </span>
+                    </a>
+                </p >
+                <header>
+                    <a class="cat" th:href="@{${seoHtml.url}}">文章</a >
+                    <h2><a th:href="@{${seoHtml.url}}" th:title="${seoHtml.title}" th:text="${seoHtml.title}"></a ></h2>
+                </header>
+                <p class="meta">
+                    <time><i class="fa fa-clock-o"></i><!--<span th:text="${seoHtml.publishDate}"></span>-->2024-05-06 23:41:04</time>
+                    <span class="pv"><i class="fa fa-eye"></i>阅读(<!--<span th:text="${seoHtml.views}"></span>-->99)</span>
+                    <span class="pc"><i class="fa fa-comments-o"></i>评论(<!--<span class="cy_cmt_count" th:text="${seoHtml.comments}"></span>-->66)</span>
+                </p >
+                <p class="note" th:text="${seoHtml.description}"></p >
+            </div>
+                <br>
+                <a th:href="@{${'/seo/list?pageNum='+($currentPage + 1)'}}" style="border-radius:10px;" class="btn btn-info pull-right">下一页 <li class="fa fa-arrow-circle-o-right fa-fw" th:class="${seoHtmlPage.last ? 'disabled' : ''}"></li></a >
+            <br>
         </div>
-
-        <div class="slide fade">
-            < img src="img3.jpg" alt="Slide 3">
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">❮</a >
-        <a class="next" onclick="plusSlides(1)">❯</a >
     </div>
 
-    <div class="content-section">
-        <div class="additional-item">
-            < img src="image1.jpg" alt="Image 1">
-            <div class="content">
-                <h3>Title 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod magna vitae justo facilisis, in tincidunt arcu vestibulum.</p >
-                Read More
+    <div class="sidebar">
+
+        <div class="widget widget-tops">
+            <ul class="widget-nav">
+                <li class="">最新文章</li></ul>
+            <ul class="widget-navcontent">
+                <li class="item item-01 active">
+                    <ul><li><time>推荐</time><a href="./23866.html">夏别代网刷下单 </a></li></ul><ul><li><time>推荐</time><a href="./23865.html">卡盟天马代刷网</a></li></ul><ul><li><time>推荐</time><a href="./23864.html">代刷个性标签网站 - 刷赞平台雷神</a></li></ul><ul><li><time>推荐</time><a href="./23863.html">刷评论的文本,qq网红刷赞网站,云商城自助下单平台快手</a></li></ul><ul><li><time>推荐</time><a href="./23862.html">空间说说赞自助下单平台 代刷乐 </a></li></ul>			</li>
+            </ul>
+        </div>
+
+        <div class="widget widget_ui_sort"><span class="icon"><i class="fa fa-hand-o-right"></i></span>
+            <h3 class="widget-title">文章分类</h3>
+            <div class="items">
+                <ul id="blogsort">
+                    <li> <a href="./index.php?class=km"><i class="fa fa-windows"></i> 卡盟</a> </li><li> <a href="./index.php?class=dsw"><i class="fa fa-windows"></i> 代刷网</a> </li><li> <a href="./index.php?class=mpz"><i class="fa fa-windows"></i> 名片赞</a> </li><li> <a href="./index.php?class=kmpt"><i class="fa fa-windows"></i> 卡盟平台</a> </li><li> <a href="./index.php?class=djmpz"><i class="fa fa-windows"></i> 低价名片赞</a> </li><li> <a href="./index.php?class=seo"><i class="fa fa-windows"></i> 优化</a> </li><li> <a href="./index.php?class=ssz"><i class="fa fa-windows"></i> 说说赞</a> </li>		</ul>
             </div>
         </div>
 
-        <div class="additional-item">
-            < img src="image2.jpg" alt="Image 2">
-            <div class="content">
-                <h3>Title 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod magna vitae justo facilisis, in tincidunt arcu vestibulum.</p >
-                Read More
-            </div>
+        <div class="widget widget_ui_posts"><span class="icon"><i class="fa fa-pencil-square-o"></i></span><h3>随机文章</h3>
+            <ul>
+                <li style="margin-left: 0px;"><a href="./seo/573678.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">QQ刷赞被K怎么办？教你应对被封账号的解决方案 -  雷神代刷网</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 16:14:05</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/573167.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何通过SEO技巧在线狂刷QQ空间人气 - QQ刷赞业务自助下单平台</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 09:06:04</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/573103.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">寻找代刷货源，如何解决供应问题 -  雷神代刷网</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 08:12:04</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/568904.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快手秒刷自助下单平台免费服务攻略 - 低价快手刷赞-刷快手业务在线</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-05 19:03:04</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/569404.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快手秒刷平台：超快速双击服务解析 - 陇南快手刷双击秒刷大叔-快手业务代理</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-06 02:06:04</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/571065.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">免费获取QQ说说赞的最佳网站攻略 - qq说说点赞顺序是怎么排的 </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-07 01:22:05</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/576287.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">抖音点赞赚钱软件，简单实用的加粉利器 - </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-10 06:53:05</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/571725.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何通过QQ刷赞服务获得一元一万名片赞 - 0.1元1万名片赞网站</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-07 10:50:06</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/575584.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何有效提升B站视频的评论数量？ - 优客代刷网</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-09 20:35:06</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/573905.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">网易云粉丝在线下单：一键畅享音乐盛宴 -  网易云音乐刷粉丝关注下单,网易云音乐粉丝下单,快速涨粉丝 </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 19:40:05</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/576004.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何设置抖音个性标签，让你在QQ代刷网脱颖而出 - </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-10 02:54:05</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/568789.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快刷网快手评论点赞的最全攻略及操作步骤 - 代刷网免费领取商品-抖音qq名片赞快手代刷服务</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-05 17:26:07</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/570069.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">抖音双击24小时自助下单：轻松购物，快速到手 - 快手下单秒刷平台蚂蚁-快手自助下单平台蚂蚁</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-06 11:24:05</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/576510.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">QQ代刷网如何盈利？探析抖音刷赞网站的商业模式 - </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-10 09:59:05</span></a></li>
+                <li style="margin-left: 0px;"><a href="./seo/570058.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快手点赞刷网站-抖音业务自助下单平台首页 - 抖音作品刷赞超低价网站入口</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-06 11:15:02</span></a></li>
+
+            </ul>
         </div>
 
-        <div class="additional-item">
-            < img src="image3.jpg" alt="Image 3">
-            <div class="content">
-                <h3>Title 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod magna vitae justo facilisis, in tincidunt arcu vestibulum.</p >
-                Read More
+        <div class="widget widget_links flag_img"><span class="icon"><i class="fa fa-link"></i></span>
+            <h3 class="widget-title">友情链接</h3>
+            <div class="items">
+                <ul id="blogsort">
+                    <li> <a target="_blank" href="https://sun-mu.cn"><i class="fa fa-link"></i> 卡盟排行榜</a> </li>		</ul>
             </div>
         </div>
-    </div>
-</div>
+</section>
 
-<script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("slide");
-
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+    <footer class="footer">
+        <div class="container">
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=11111111&site=qq&menu=yes">联系</a> | <a target="_blank" href="./sitemap.xml">sitemap</a>
+            <hr>
+            <a href="https://beian.miit.gov.cn/">备案号：豫ICP备14005772号-1 京ICP备14007621号-1</a></div>
+    </footer>
+    <script>
+        function wapDh(){
+            html = $('.site-navbar').html();
+            layer.open({
+                title:'导航',
+                content:html
+            });
         }
-
-        slides[slideIndex-1].style.display = "block";
-    }
-</script>
-
-</body>
+    </script>
+    <script src="//s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js"></script>
 </html>
