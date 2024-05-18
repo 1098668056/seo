@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <title> - 卡盟排行榜</title>
+    <title>卡盟排行榜-国内领先的卡盟网站排名平台</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link href="//s1.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -47,15 +47,21 @@
                 </div>				</div>
                 <a class="left carousel-control" href="#homeslider" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a><a class="right carousel-control" href="#homeslider" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
             </div>
-            <div class="content_catag_container"><h2 class="content_catag_title isKeywords font_title">文章链接</h2><p>卡盟网【sun-mu.cn】是十大卡盟排行榜官方平台,集2024年口碑信誉好的卡盟平台,欢迎卡盟站长在卡盟排行榜中投放广告.</p></div><article class="excerpt excerpt-1">
-            <p class="focus"><a class="thumbnail" href="./23866.html">
-                <span class="item">
-                    <span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span>
-                </span></a></p>
-            <header><a class="cat" href="./index.php?class=">文章</a>
-                <h2><a href="./23866.html" title="夏别代网刷下单 ">夏别代网刷下单 </a></h2></header><p class="meta"><time><i class="fa fa-clock-o"></i>2024-05-06 23:41:04</time><span class="pv"><i class="fa fa-eye"></i>阅读(99+)</span><span class="pc"><i class="fa fa-comments-o"></i>评论(<span class="cy_cmt_count">9+</span>)</span></p>
-            <p class="note">夏别代网刷下单,岳帅吖自助下单平台,快手刷小红心软件,代刷快手推广</p></article><article class="excerpt excerpt-1"></article>
+<!--            <div class="content_catag_container"><h2 class="content_catag_title isKeywords font_title">文章链接</h2>-->
+<!--            <article class="excerpt excerpt-1">-->
+<!--            <p class="focus"><a class="thumbnail" href="./23866.html">-->
+<!--                <span class="item">-->
+<!--                    <span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span>-->
+<!--                </span></a></p>-->
+<!--            <header><a class="cat" href="./index.php?class=">文章</a>-->
+<!--                <h2><a href="./23866.html" title="夏别代网刷下单 ">夏别代网刷下单 </a></h2>-->
+<!--            </header>-->
+<!--            <p class="meta"><time><i class="fa fa-clock-o"></i>2024-05-06 23:41:04</time><span class="pv"><i class="fa fa-eye"></i>阅读(99+)</span><span class="pc"><i class="fa fa-comments-o"></i>评论(<span class="cy_cmt_count">9+</span>)</span></p>-->
+<!--            <p class="note">夏别代网刷下单,岳帅吖自助下单平台,快手刷小红心软件,代刷快手推广</p>-->
+<!--            </article>-->
+
             <div th:each="seoHtml : ${seoHtmlList}" class="content_catag_container">
+                <article class="excerpt excerpt-1">
                 <p class="focus">
                     <a class="thumbnail" th:href="@{${seoHtml.url}}">
             <span class="item">
@@ -68,11 +74,12 @@
                     <h2><a th:href="@{${seoHtml.url}}" th:title="${seoHtml.title}" th:text="${seoHtml.title}"></a ></h2>
                 </header>
                 <p class="meta">
-                    <time><i class="fa fa-clock-o"></i><!--<span th:text="${seoHtml.publishDate}"></span>-->2024-05-06 23:41:04</time>
-                    <span class="pv"><i class="fa fa-eye"></i>阅读(<!--<span th:text="${seoHtml.views}"></span>-->99)</span>
-                    <span class="pc"><i class="fa fa-comments-o"></i>评论(<!--<span class="cy_cmt_count" th:text="${seoHtml.comments}"></span>-->66)</span>
+                    <time><i class="fa fa-clock-o" th:text="${seoHtml.createTime}"></i></time>
+                    <span class="pv"><i class="fa fa-eye"></i>阅读(99)</span>
+                    <span class="pc"><i class="fa fa-comments-o"></i>评论(66)</span>
                 </p >
                 <p class="note" th:text="${seoHtml.description}"></p >
+            </article>
             </div>
                 <br>
                 <a th:href="@{/seo/index(pageNum=${currentPage + 1})}" style="border-radius:10px;" th:class="${totalPage <= currentPage ? 'hidden' :'btn btn-info pull-right' }">下一页<li th:class="${totalPage <= currentPage ? 'hidden' :'fa fa-arrow-circle-o-right fa-fw' }"></li></a>
@@ -86,8 +93,23 @@
             <ul class="widget-nav">
                 <li class="">最新文章</li></ul>
             <ul class="widget-navcontent">
-                <li class="item item-01 active">
-                    <ul><li><time>推荐</time><a href="./23866.html">夏别代网刷下单 </a></li></ul><ul><li><time>推荐</time><a href="./23865.html">卡盟天马代刷网</a></li></ul><ul><li><time>推荐</time><a href="./23864.html">代刷个性标签网站 - 刷赞平台雷神</a></li></ul><ul><li><time>推荐</time><a href="./23863.html">刷评论的文本,qq网红刷赞网站,云商城自助下单平台快手</a></li></ul><ul><li><time>推荐</time><a href="./23862.html">空间说说赞自助下单平台 代刷乐 </a></li></ul>			</li>
+                <li class="item item-01 active" th:each="topFive :${topFives}">
+                    <ul>
+                        <li><time>推荐</time><a th:href="${topFive.url}" th:text="${topFive.title}"></a></li>
+                    </ul>
+<!--                    <ul>-->
+<!--                        <li><time>推荐</time><a href="./23865.html">卡盟天马代刷网</a></li>-->
+<!--                    </ul>-->
+<!--                    <ul>-->
+<!--                        <li><time>推荐</time><a href="./23864.html">代刷个性标签网站 - 刷赞平台雷神</a></li>-->
+<!--                    </ul>-->
+<!--                    <ul>-->
+<!--                        <li><time>推荐</time><a href="./23863.html">刷评论的文本,qq网红刷赞网站,云商城自助下单平台快手</a></li>-->
+<!--                    </ul>-->
+<!--                    <ul>-->
+<!--                        <li><time>推荐</time><a href="./23862.html">空间说说赞自助下单平台 代刷乐 </a></li>-->
+<!--                    </ul>-->
+                </li>
             </ul>
         </div>
 
@@ -100,23 +122,8 @@
         </div>
 
         <div class="widget widget_ui_posts"><span class="icon"><i class="fa fa-pencil-square-o"></i></span><h3>随机文章</h3>
-            <ul>
-                <li style="margin-left: 0px;"><a href="./seo/573678.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">QQ刷赞被K怎么办？教你应对被封账号的解决方案 -  雷神代刷网</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 16:14:05</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/573167.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何通过SEO技巧在线狂刷QQ空间人气 - QQ刷赞业务自助下单平台</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 09:06:04</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/573103.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">寻找代刷货源，如何解决供应问题 -  雷神代刷网</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 08:12:04</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/568904.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快手秒刷自助下单平台免费服务攻略 - 低价快手刷赞-刷快手业务在线</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-05 19:03:04</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/569404.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快手秒刷平台：超快速双击服务解析 - 陇南快手刷双击秒刷大叔-快手业务代理</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-06 02:06:04</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/571065.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">免费获取QQ说说赞的最佳网站攻略 - qq说说点赞顺序是怎么排的 </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-07 01:22:05</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/576287.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">抖音点赞赚钱软件，简单实用的加粉利器 - </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-10 06:53:05</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/571725.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何通过QQ刷赞服务获得一元一万名片赞 - 0.1元1万名片赞网站</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-07 10:50:06</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/575584.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何有效提升B站视频的评论数量？ - 优客代刷网</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-09 20:35:06</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/573905.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">网易云粉丝在线下单：一键畅享音乐盛宴 -  网易云音乐刷粉丝关注下单,网易云音乐粉丝下单,快速涨粉丝 </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-08 19:40:05</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/576004.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">如何设置抖音个性标签，让你在QQ代刷网脱颖而出 - </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-10 02:54:05</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/568789.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快刷网快手评论点赞的最全攻略及操作步骤 - 代刷网免费领取商品-抖音qq名片赞快手代刷服务</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-05 17:26:07</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/570069.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">抖音双击24小时自助下单：轻松购物，快速到手 - 快手下单秒刷平台蚂蚁-快手自助下单平台蚂蚁</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-06 11:24:05</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/576510.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">QQ代刷网如何盈利？探析抖音刷赞网站的商业模式 - </span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-10 09:59:05</span></a></li>
-                <li style="margin-left: 0px;"><a href="./seo/570058.html"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text">快手点赞刷网站-抖音业务自助下单平台首页 - 抖音作品刷赞超低价网站入口</span><i class="fa fa-clock-o fa-fw"></i><span class="muted">2024-04-06 11:15:02</span></a></li>
-
+            <ul th:each="seoListRandom :${seoListRandom} " >
+                <li style="margin-left: 0px;"><a th:href="@{${seoListRandom.url}}"><span class="thumbnail"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img2.png" style="display: block;"></span><span class="text" th:text="${seoListRandom.title}"></span><i class="fa fa-clock-o fa-fw"></i><span class="muted" th:text="${seoListRandom.createTime}"></span></a></li>
             </ul>
         </div>
 

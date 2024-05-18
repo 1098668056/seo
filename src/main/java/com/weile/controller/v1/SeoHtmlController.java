@@ -21,6 +21,8 @@ public class SeoHtmlController {
         model.addAttribute("seoHtmlList",allSeoHtml.getContent());
         model.addAttribute("currentPage",(pageNum));
         model.addAttribute("totalPage",(allSeoHtml.getTotalPages()));
+        //todo 增加推荐字段
+        model.addAttribute("topFives",null);
         model.addAttribute("seoListRandom",seoHtmlService.getAllSeoHtmlRandom());
         return "index";
     }
