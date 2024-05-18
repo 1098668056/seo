@@ -20,7 +20,7 @@ public class SeoHtmlController {
         Page<SeoHtml> allSeoHtml = seoHtmlService.getAllSeoHtml(pageNum);
         model.addAttribute("seoHtmlList",allSeoHtml.getContent());
         model.addAttribute("currentPage",(pageNum));
-        model.addAttribute("totalPage",(allSeoHtml.getTotalPages()));
+        model.addAttribute("totalPage",(allSeoHtml.getTotalPages()-1));
         //todo 增加推荐字段
         model.addAttribute("topFives",null);
         model.addAttribute("seoListRandom",seoHtmlService.getAllSeoHtmlRandom());
