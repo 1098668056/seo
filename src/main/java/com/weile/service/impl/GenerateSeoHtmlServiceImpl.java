@@ -86,7 +86,6 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
         params.put("lastUrl", seoHtml.getUrl());
         params.put("nextTitle", seoHtml.getTitle());
         params.put("nextUrl", seoHtml.getUrl());
-        params.put("siteUrl", seoHtml.getUrl());
         params.put("id",seoHtmlDb.getId());
         return params;
     }

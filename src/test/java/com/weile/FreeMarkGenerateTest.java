@@ -37,9 +37,9 @@ public class FreeMarkGenerateTest {
     public void onlyTest()
     {
         List<KeyWords> all = keyWordsRepository.findAll();
-            String pinyin = PinyinUtil.getPinyin("代刷网");
+            String pinyin = PinyinUtil.getPinyin("乔总Test");
             String resultStr = pinyin.replaceAll(" ", "");
-            String result = htmlViewService.onlyHtml(resultStr, "代刷网");
+            String result = htmlViewService.onlyHtml(resultStr, "乔总Test");
             System.out.println("result = " + result);
     }
 

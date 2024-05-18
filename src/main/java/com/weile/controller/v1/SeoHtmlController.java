@@ -1,6 +1,7 @@
 package com.weile.controller.v1;
 
 import com.weile.domain.SeoHtml;
+import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.SeoHtmlService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import javax.annotation.Resource;
 public class SeoHtmlController {
     @Resource
     private SeoHtmlService seoHtmlService;
+    @Resource
+    private SeoHtmlRepository seoHtmlRepository;
 
     @GetMapping("/seo/index")
     public String getSeoHtmlList(@RequestParam(value = "pageNum",defaultValue = "0") int pageNum, Model model){
@@ -36,6 +39,7 @@ public class SeoHtmlController {
     public String count(@PathVariable(value = "id" )Long id){
         //todo 加一操作
         System.out.println("id = " + id);
-        return "success";
+
+        return "http://www.test1111111111.com";
     }
 }

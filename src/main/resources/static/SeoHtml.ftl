@@ -82,7 +82,7 @@
             <h4>${keywords}<br>
                 <a href="JavaScript:;" style="line-height: 45px;">百度诚信平台-口碑好-你值得信赖！</a>
             </h4>
-            <a href="${siteUrl}" class="btn btn-theme">点击进入</a> <a href="${siteUrl}" class="btn btn-outline">立即下单</a><br>
+            <a href="" class="btn btn-theme" id="result_url_1">点击进入</a> <a href="" class="btn btn-outline" id="result_url_2">立即下单</a><br>
         </div>
         <!-- end container -->
     </div>
@@ -255,6 +255,10 @@
             .then(response => response.text())
             .then(html => {
                 // 在这里处理获取到的 HTML 内容
+                var element1 = document.getElementById("result_url_1")
+                var element2 = document.getElementById("result_url_2")
+                element1.href = html
+                element2.href = html
                 console.log(html);
             })
             .catch(error => console.error('出错了:', error));
