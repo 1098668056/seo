@@ -3,11 +3,11 @@ package com.weile.service.impl;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.SeoHtmlService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -15,16 +15,18 @@ import java.util.List;
 public class SeoHtmlServiceImpl implements SeoHtmlService {
 
     @Resource
-    SeoHtmlRepository seoHtmlRepository;
+    private SeoHtmlRepository seoHtmlRepository;
+
 
     @Override
     public List<SeoHtml> getAllSeoHtml(int pageNum) {
-        Pageable pageable = PageRequest.of(pageNum, 5, Sort.by("id"));
-        return seoHtmlRepository.getAllSeoHtml(pageable);
+        Pageable pageable = PageRequest.of(pageNum, 5, Sort.Direction.DESC,"create_time");
+        Page<SeoHtml> pages = seoHtmlRepository.findAll(pageable);
+        return pages.getContent();
     }
 
     @Override
     public List<SeoHtml> getAllSeoHtmlRandom() {
-        return seoHtmlRepository.getSeoRandom();
+        return seoHtmlRepository.findFirst5ByOrderByTitleDesc();
     }
 }

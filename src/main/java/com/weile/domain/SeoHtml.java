@@ -2,6 +2,7 @@ package com.weile.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Author: xwl
@@ -20,6 +21,7 @@ public class SeoHtml implements Serializable {
     private String content;
     private String url;
     private String fileName;
+    private Date createTime;
 
     public Long getId() {
         return id;
@@ -77,7 +79,15 @@ public class SeoHtml implements Serializable {
         this.fileName = fileName;
     }
 
-    public SeoHtml(Long id, String title, String description, String keywords, String content, String url, String fileName) {
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public SeoHtml(Long id, String title, String description, String keywords, String content, String url, String fileName, Date createTime) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -85,6 +95,7 @@ public class SeoHtml implements Serializable {
         this.content = content;
         this.url = url;
         this.fileName = fileName;
+        this.createTime = createTime;
     }
 
     public SeoHtml() {
