@@ -19,10 +19,9 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
 
 
     @Override
-    public List<SeoHtml> getAllSeoHtml(int pageNum) {
+    public Page<SeoHtml> getAllSeoHtml(int pageNum) {
         Pageable pageable = PageRequest.of(pageNum, 5, Sort.Direction.DESC,"createTime");
-        Page<SeoHtml> pages = seoHtmlRepository.findAll(pageable);
-        return pages.getContent();
+        return seoHtmlRepository.findAll(pageable);
     }
 
     @Override

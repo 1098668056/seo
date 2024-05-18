@@ -54,12 +54,12 @@
                 </span></a></p>
             <header><a class="cat" href="./index.php?class=">文章</a>
                 <h2><a href="./23866.html" title="夏别代网刷下单 ">夏别代网刷下单 </a></h2></header><p class="meta"><time><i class="fa fa-clock-o"></i>2024-05-06 23:41:04</time><span class="pv"><i class="fa fa-eye"></i>阅读(99+)</span><span class="pc"><i class="fa fa-comments-o"></i>评论(<span class="cy_cmt_count">9+</span>)</span></p>
-            <p class="note">夏别代网刷下单,岳帅吖自助下单平台,快手刷小红心软件,代刷快手推广</p></article><article class="excerpt excerpt-1">
+            <p class="note">夏别代网刷下单,岳帅吖自助下单平台,快手刷小红心软件,代刷快手推广</p></article><article class="excerpt excerpt-1"></article>
             <div th:each="seoHtml : ${seoHtmlList}" class="content_catag_container">
                 <p class="focus">
                     <a class="thumbnail" th:href="@{${seoHtml.url}}">
             <span class="item">
-                <span class="thumb-span"><span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span>
+                <span class="thumb-span"><span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span></span>
             </span>
                     </a>
                 </p >
@@ -75,7 +75,7 @@
                 <p class="note" th:text="${seoHtml.description}"></p >
             </div>
                 <br>
-                <a th:href="@{${'/seo/index?pageNum='+($currentPage + 1)'}}" style="border-radius:10px;" class="btn btn-info pull-right">下一页 <li class="fa fa-arrow-circle-o-right fa-fw" th:class="${seoHtmlPage.last ? 'disabled' : ''}"></li></a >
+                <a th:href="@{/seo/index(pageNum=${currentPage + 1})}" style="border-radius:10px;" th:class="${totalPage <= currentPage ? 'hidden' :'btn btn-info pull-right' }">下一页<li th:class="${totalPage <= currentPage ? 'hidden' :'fa fa-arrow-circle-o-right fa-fw' }"></li></a>
             <br>
         </div>
     </div>
