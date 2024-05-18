@@ -37,13 +37,10 @@ public class FreeMarkGenerateTest {
     public void onlyTest()
     {
         List<KeyWords> all = keyWordsRepository.findAll();
-        for (int i = 0; i < 10; i++) {
-            KeyWords keyWords = all.get(i);
-            String pinyin = PinyinUtil.getPinyin(keyWords.getKeyName());
+            String pinyin = PinyinUtil.getPinyin("代刷网");
             String resultStr = pinyin.replaceAll(" ", "");
-            String result = htmlViewService.onlyHtml(resultStr, keyWords.getKeyName());
+            String result = htmlViewService.onlyHtml(resultStr, "代刷网");
             System.out.println("result = " + result);
-        }
     }
 
 }

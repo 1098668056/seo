@@ -9,6 +9,7 @@ import com.weile.service.FileStorageService;
 import com.weile.service.GenerateSeoHtmlService;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,17 +53,8 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
         try {
             template = configuration.getTemplate(TEMPLATE_PATH);
 
-
-            Map<String, Object> params = new HashMap<>(16);
-            params.put("title", seoHtml.getTitle());
-            params.put("descriptions", seoHtml.getDescription());
-            params.put("keywords", seoHtml.getKeywords());
-            params.put("content", seoHtml.getContent());
-            params.put("lastTitle", seoHtml.getTitle());
-            params.put("lastUrl", seoHtml.getUrl());
-            params.put("nextTitle", seoHtml.getTitle());
-            params.put("nextUrl", seoHtml.getUrl());
-            params.put("siteUrl", seoHtml.getUrl());
+            // 封装参数
+            Map<String, Object> params = getStringObjectMap(seoHtml);
             StringWriter out = new StringWriter();
 
             template.process(params, out);
@@ -80,5 +72,22 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
         seoHtml.setUrl(url);
         seoHtmlRepository.save(seoHtml);
         return url;
+    }
+
+    @NotNull
+    private  Map<String, Object> getStringObjectMap(SeoHtml seoHtml) {
+        SeoHtml seoHtmlDb = seoHtmlRepository.save(seoHtml);
+        Map<String, Object> params = new HashMap<>(16);
+        params.put("title", seoHtml.getTitle());
+        params.put("descriptions", seoHtml.getDescription());
+        params.put("keywords", seoHtml.getKeywords());
+        params.put("content", seoHtml.getContent());
+        params.put("lastTitle", seoHtml.getTitle());
+        params.put("lastUrl", seoHtml.getUrl());
+        params.put("nextTitle", seoHtml.getTitle());
+        params.put("nextUrl", seoHtml.getUrl());
+        params.put("siteUrl", seoHtml.getUrl());
+        params.put("id",seoHtmlDb.getId());
+        return params;
     }
 }

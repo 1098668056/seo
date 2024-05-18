@@ -251,8 +251,16 @@
         $(document).ready(function() {
             App.init();
         });
+        fetch('http://seo.mirror-era.cn/count/click/${id}')
+            .then(response => response.text())
+            .then(html => {
+                // 在这里处理获取到的 HTML 内容
+                console.log(html);
+            })
+            .catch(error => console.error('出错了:', error));
     </script>
 
 
 
-</div></body></html>
+</div>
+</body></html>
