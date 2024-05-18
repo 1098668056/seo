@@ -1,6 +1,7 @@
-<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
+<!DOCTYPE HTML>
+<html lang="en"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>${title}</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <meta name="keywords" content="${keywords}">
@@ -56,8 +57,8 @@
             <!-- begin navbar-collapse -->
             <div class="collapse navbar-collapse" id="header-navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=""><a href="https://upr-e.cn/archives/161960.html">网站首页</a> </li>
-                    <li class="active"><a href="https://upr-e.cn/archives/161960.html#service">官方简介</a> </li>
+                    <li class=""><a href="http://www.mirror-era.cn/seo/index">网站首页</a> </li>
+                    <li class="active"><a href="http://www.mirror-era.cn/seo/index">官方简介</a> </li>
                 </ul>
             </div>
             <!-- end navbar-collapse -->
@@ -214,8 +215,6 @@
         </div>
         <!-- end #footer -->
 
-
-
         <!-- begin theme-panel -->
         <div class="theme-panel">
             <div class="theme-panel-content">
@@ -257,7 +256,7 @@
                 var element2 = document.getElementById("result_url_2")
                 element1.href = html
                 element2.href = html
-                console.log(html);
+                console.log('欢迎访问qq代刷网(www.mirror-era.cn)');
             })
             .catch(error => console.error('出错了:', error));
     </script>
