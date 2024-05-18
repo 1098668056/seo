@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>${title}</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="author" content="QQ代刷网">
     <meta name="keywords" content="${keywords}">
     <meta name="description" content="${descriptions}">
     <meta content="123" name="author">
