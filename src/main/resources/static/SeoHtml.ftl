@@ -50,7 +50,7 @@
                 <a href="https://upr-e.cn/archives/161960.html" class="navbar-brand">
                     <span class="brand-logo"></span>
                     <span class="brand-text">
-                            <span class="text-theme">自助业务下单平台</span>
+                            <span class="text-theme">${title}</span>
                         </span>
                 </a>
             </div>
@@ -82,7 +82,7 @@
             <h4>${keywords}<br>
                 <a href="JavaScript:;" style="line-height: 45px;">百度诚信平台-口碑好-你值得信赖！</a>
             </h4>
-            <a href="https://zan.qian-tao.xyz/m/" class="btn btn-theme">点击进入</a> <a href="https://zan.qian-tao.xyz/m/" class="btn btn-outline">立即下单</a><br>
+            <a href="${siteUrl}" class="btn btn-theme">点击进入</a> <a href="${siteUrl}" class="btn btn-outline">立即下单</a><br>
         </div>
         <!-- end container -->
     </div>
@@ -204,11 +204,11 @@
         <div class="container">
             <div class="footer-brand">
                 <div class="footer-brand-logo"></div>
-                u易博客站</div>
+                版权所有</div>
             <div class="nextArticle">
-                <p>上一篇：<a href="https://upr-e.cn/archives/161959.html" title="快手刷赞0.04刷100赞快_微信业务自助下单刷平台_24小时自助代刷下单平台">快手刷赞0.04刷100赞快_微信业务自助下单刷平台_24小时自助代刷下单平台</a></p>
+                <p>上一篇：<a href="${lastUrl}" title="${lastTitle}">${lastTitle}</a></p>
 
-                <p>下一篇：<a href="https://upr-e.cn/archives/161961.html" title="qq刷赞平台全网+最低价啊qq空间 - 1元涨100粉网站_互粉软件神器">qq刷赞平台全网+最低价啊qq空间 - 1元涨100粉网站_互粉软件神器</a></p>
+                <p>下一篇：<a href="" title="${nextUrl}" title="${nextUrl}">${nextTitle}</a></p>
                 <p>
                     Copyright © 2020-2021 版权所有. <a href="https://upr-e.cn/sitemap.xml">sitemap</a> <br>
                 </p>

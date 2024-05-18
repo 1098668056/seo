@@ -58,6 +58,11 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
             params.put("descriptions", seoHtml.getDescription());
             params.put("keywords", seoHtml.getKeywords());
             params.put("content", seoHtml.getContent());
+            params.put("lastTitle", seoHtml.getTitle());
+            params.put("lastUrl", seoHtml.getUrl());
+            params.put("nextTitle", seoHtml.getTitle());
+            params.put("nextUrl", seoHtml.getUrl());
+            params.put("siteUrl", seoHtml.getUrl());
             StringWriter out = new StringWriter();
 
             template.process(params, out);
