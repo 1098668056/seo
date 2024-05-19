@@ -206,11 +206,9 @@
                 <div class="footer-brand-logo"></div>
                 版权所有</div>
             <div class="nextArticle">
-                <p>上一篇：<a href="${lastUrl}" title="${lastTitle}">${lastTitle}</a></p>
-
-                <p>下一篇：<a href="" title="${nextUrl}" title="${nextUrl}">${nextTitle}</a></p>
+                <p>上一篇：<a href="${lastUrl}" title="${lastUrl}">${lastTitle}</a></p>
                 <p>
-                    Copyright © 2020-2021 版权所有. <a href="https://upr-e.cn/sitemap.xml">sitemap</a> <br>
+                    Copyright © 2020-2024 版权所有. <a href="https://www.mirror-era.cn/sitemap.xml">sitemap</a> <br>
                 </p>
             </div>
         </div>

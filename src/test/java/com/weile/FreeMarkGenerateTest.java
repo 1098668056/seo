@@ -4,6 +4,7 @@ import cn.hutool.extra.pinyin.PinyinUtil;
 import com.weile.domain.KeyWords;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.KeyWordsRepository;
+import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.FileStorageService;
 import com.weile.service.GenerateSeoHtmlService;
 import com.weile.service.HtmlViewService;
@@ -32,15 +33,30 @@ public class FreeMarkGenerateTest {
     private KeyWordsRepository keyWordsRepository;
     @Resource
     private HtmlViewService htmlViewService;
+    @Resource
+    private SeoHtmlRepository seoHtmlRepository;
 
     @Test
     public void onlyTest()
     {
         List<KeyWords> all = keyWordsRepository.findAll();
-            String pinyin = PinyinUtil.getPinyin("乔总Test");
+            String pinyin = PinyinUtil.getPinyin("qq代刷网");
             String resultStr = pinyin.replaceAll(" ", "");
-            String result = htmlViewService.onlyHtml(resultStr, "乔总Test");
+            String result = htmlViewService.onlyHtml(resultStr, "qq代刷网");
             System.out.println("result = " + result);
+    }
+    @Test
+    public void beforeTest()
+    {
+        SeoHtml first1ByIdAfterOrderById = seoHtmlRepository.findFirst1ByIdAfterOrderById(10L).orElse(new SeoHtml());
+        System.out.println("first1ByIdAfterOrderById = " + first1ByIdAfterOrderById);
+    }
+    @Test
+    public void afterTest()
+    {
+        SeoHtml first1ByIdAfterOrderById = seoHtmlRepository.findFirst1ByIdBeforeOrderByIdDesc(10L).orElse(new SeoHtml());
+        System.out.println("first1ByIdAfterOrderById = " + first1ByIdAfterOrderById);
+
     }
 
 }

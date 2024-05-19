@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @Author: xwl
@@ -20,5 +21,17 @@ public interface SeoHtmlRepository extends JpaRepository<SeoHtml,Long> {
 
     List<SeoHtml> findFirst5ByOrderByTitleDesc();
 
+    /**
+     * 获取前一篇文章
+     * @return
+     */
+
+    Optional<SeoHtml> findFirst1ByIdBeforeOrderByIdDesc(Long id);
+    /**
+     * 获取后一篇文章
+     * @return
+     */
+
+    Optional<SeoHtml> findFirst1ByIdAfterOrderById(Long id);
 
 }

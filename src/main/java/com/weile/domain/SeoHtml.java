@@ -15,11 +15,11 @@ public class SeoHtml implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
+    private String title = "暂无文章";
     private String description;
     private String keywords;
     private String content;
-    private String url;
+    private String url = "http://www.mirror-era.cn";
     private String fileName;
     private Date createTime;
 

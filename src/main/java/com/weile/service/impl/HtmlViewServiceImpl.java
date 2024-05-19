@@ -8,6 +8,7 @@ import com.weile.service.GenerateSeoHtmlService;
 import com.weile.service.HtmlViewService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public class HtmlViewServiceImpl implements HtmlViewService {
         seoHtml.setDescription(desc[0]);
         seoHtml.setTitle(keyWords);
         seoHtml.setContent(content);
+        seoHtml.setCreateTime(new Date());
         List<String> firstByKeyName = keyWordsRepository.findFirstByKeyName(keyWords);
         if (firstByKeyName != null && !firstByKeyName.isEmpty()){
             int index = RandomUtil.randomInt(0, firstByKeyName.size());

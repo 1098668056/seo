@@ -11,6 +11,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @Author: xwl
@@ -77,15 +79,14 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
     @NotNull
     private  Map<String, Object> getStringObjectMap(SeoHtml seoHtml) {
         SeoHtml seoHtmlDb = seoHtmlRepository.save(seoHtml);
+        SeoHtml before = seoHtmlRepository.findFirst1ByIdBeforeOrderByIdDesc(seoHtmlDb.getId()).orElse(new SeoHtml());
         Map<String, Object> params = new HashMap<>(16);
         params.put("title", seoHtml.getTitle());
         params.put("descriptions", seoHtml.getDescription());
         params.put("keywords", seoHtml.getKeywords());
         params.put("content", seoHtml.getContent());
-        params.put("lastTitle", seoHtml.getTitle());
-        params.put("lastUrl", seoHtml.getUrl());
-        params.put("nextTitle", seoHtml.getTitle());
-        params.put("nextUrl", seoHtml.getUrl());
+        params.put("lastTitle", before.getTitle());
+        params.put("lastUrl", before.getUrl());
         params.put("id",seoHtmlDb.getId());
         return params;
     }
