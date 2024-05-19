@@ -37,7 +37,7 @@ public class GenerateKeyWordTaskService implements GenerateKeyWordTask {
     @Transactional(rollbackFor = Exception.class)
     public void keyWordTask() {
         log.info("开始采集--------------");
-        KeysResp resp = keyWordClient.getKeyWords("自助下单平台");
+        KeysResp resp = keyWordClient.getKeyWords("自助下单平台",0);
         List<KeyWords> keyWords = new ArrayList<>();
         if (resp.getData().getWord().isEmpty()){
             throw new ApiException("暂无关键词");

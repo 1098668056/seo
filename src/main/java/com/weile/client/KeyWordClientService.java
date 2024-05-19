@@ -27,11 +27,15 @@ public class KeyWordClientService implements KeyWordClient {
     @Resource
     private KeyWordsRepository keyWordsRepository;
     @Override
-    public KeysResp getKeyWords(String keyWord){
+    public KeysResp getKeyWords(String keyWord,Integer type){
 
-        long count = keyWordsRepository.count();
-        long result = count / 100L;
-
+        long count = keyWordsRepository.countByUseCountEquals(type);
+        long result = 0L;
+        if (count == 0){
+             result = 1L;
+        }else {
+            result  = (count / 100)+1;
+        }
         HttpResponse resp = HttpUtil.createPost(url).header("Authorization", apiKey)
                 .form(BeanUtil.beanToMap(new KeysRequest(keyWord, (int) result,100))).execute();
         return JSON.parseObject(resp.body(), KeysResp.class);

@@ -28,4 +28,6 @@ public interface KeyWordsRepository extends JpaRepository<KeyWords,Long> {
      */
     @Query(value = "select keyName from KeyWords where keyName like %:keyName% order by keyName desc")
     List<String> findFirstByKeyName (@Param("keyName") String keyName);
+
+    int countByUseCountEquals(Integer useCount);
 }

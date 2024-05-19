@@ -52,6 +52,6 @@ public class SeoHtmlController {
         } catch (Exception e) {
             throw new ApiException("未获取到类型");
         }
-        return "http://www.test1111111111.com";
+        return "http://www.mirror-era.cn";
     }
 }

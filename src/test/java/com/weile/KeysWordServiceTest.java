@@ -3,6 +3,8 @@ package com.weile;
 import cn.hutool.core.util.RandomUtil;
 import com.weile.client.KeyWordClient;
 import com.weile.client.Response.KeysResp;
+import com.weile.client.Response.WordResp;
+import com.weile.domain.KeyWords;
 import com.weile.repository.KeyWordsRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.awt.geom.RectangularShape;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -28,7 +31,7 @@ public class KeysWordServiceTest {
     private KeyWordsRepository keyWordsRepository;
     @Test
     public void keysTest(){
-        KeysResp resp = keyWordClient.getKeyWords("自助下单平台");
+        KeysResp resp = keyWordClient.getKeyWords("自助下单平台",1);
         System.out.println("resp = " + resp);
     }
     @Test
@@ -38,5 +41,29 @@ public class KeysWordServiceTest {
         String keyName = result.get(index);
         System.out.println("keyName = " + keyName);
 
+    }
+    @Test
+    public void getKey(){
+        for (int i = 0; i < 5; i++) {
+            System.out.println("采集"+i+"次");
+            List<KeyWords> lists = new ArrayList<>();
+            KeysResp resp = keyWordClient.getKeyWords("自助下单平台",1);
+            for (WordResp wordResp : resp.getData().getWord()) {
+                KeyWords keyWords = new KeyWords();
+                keyWords.setKeyName(wordResp.getKeyword());
+                keyWords.setScore(wordResp.getIndex());
+                keyWords.setUseCount(1);
+                lists.add(keyWords);
+            }
+            /**
+             * 批量保存数据
+             */
+            keyWordsRepository.saveAll(lists);
+        }
+    }
+    @Test
+    public void notIn(){
+        int i = keyWordsRepository.countByUseCountEquals(0);
+        System.out.println("i = " + i);
     }
 }

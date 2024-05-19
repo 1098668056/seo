@@ -13,5 +13,5 @@ public interface KeyWordClient {
      * @param keyWord 行业词汇
      * @return 返回关键词详情
      */
-    public KeysResp getKeyWords(String keyWord);
+    public KeysResp getKeyWords(String keyWord,Integer type);
 }
