@@ -3,6 +3,7 @@ package com.weile.controller.v1;
 import com.weile.config.ApiException;
 import com.weile.domain.HtmlBehavior;
 import com.weile.domain.SeoHtml;
+import com.weile.domain.vo.SeoHtmlVO;
 import com.weile.repository.HtmlBehaviorRepository;
 import com.weile.service.SeoHtmlService;
 import org.springframework.data.domain.Page;
@@ -21,7 +22,7 @@ public class SeoHtmlController {
 
     @GetMapping("/seo/index")
     public String getSeoHtmlList(@RequestParam(value = "pageNum",defaultValue = "0") int pageNum, Model model){
-        Page<SeoHtml> allSeoHtml = seoHtmlService.getAllSeoHtml(pageNum);
+        Page<SeoHtmlVO> allSeoHtml = seoHtmlService.getAllSeoHtml(pageNum);
         model.addAttribute("seoHtmlList",allSeoHtml.getContent());
         model.addAttribute("currentPage",(pageNum));
         model.addAttribute("totalPage",(allSeoHtml.getTotalPages()-1));

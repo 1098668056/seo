@@ -1,12 +1,12 @@
 package com.weile.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.weile.domain.SeoHtml;
+import com.weile.domain.vo.SeoHtmlVO;
+import com.weile.repository.HtmlBehaviorRepository;
 import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.SeoHtmlService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,12 +16,19 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
 
     @Resource
     private SeoHtmlRepository seoHtmlRepository;
+    @Resource
+    private HtmlBehaviorRepository htmlBehaviorRepository;
 
 
     @Override
-    public Page<SeoHtml> getAllSeoHtml(int pageNum) {
+    public Page<SeoHtmlVO> getAllSeoHtml(int pageNum) {
         Pageable pageable = PageRequest.of(pageNum, 5, Sort.Direction.DESC,"createTime");
-        return seoHtmlRepository.findAll(pageable);
+        Page<SeoHtml> all = seoHtmlRepository.findAll(pageable);
+        List<SeoHtmlVO> seoHtmlVos = BeanUtil.copyToList(all.getContent(), SeoHtmlVO.class);
+        seoHtmlVos.forEach(o->{
+           o.setSource(htmlBehaviorRepository.countByHtmlId(o.getId()));
+        });
+        return new PageImpl<>(seoHtmlVos, pageable, all.getTotalElements());
     }
 
     @Override

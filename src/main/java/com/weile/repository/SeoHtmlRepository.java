@@ -1,6 +1,8 @@
 package com.weile.repository;
 
 import com.weile.domain.SeoHtml;
+import com.weile.domain.vo.SeoHtmlVO;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -10,4 +10,10 @@ import org.springframework.stereotype.Repository;
  **/
 @Repository
 public interface HtmlBehaviorRepository extends JpaRepository<com.weile.domain.HtmlBehavior,Long> {
+    /**
+     * 根据id统计条数
+     * @param htmlId
+     * @return
+     */
+    Long countByHtmlId(Long htmlId);
 }

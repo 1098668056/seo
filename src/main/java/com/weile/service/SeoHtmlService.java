@@ -1,6 +1,7 @@
 package com.weile.service;
 
 import com.weile.domain.SeoHtml;
+import com.weile.domain.vo.SeoHtmlVO;
 import org.springframework.data.domain.Page;
 
 import java.awt.print.Pageable;
@@ -10,7 +11,7 @@ public interface SeoHtmlService {
     /**
      * 静态页面列表
      */
-    Page<SeoHtml> getAllSeoHtml(int pageNum);
+    Page<SeoHtmlVO> getAllSeoHtml(int pageNum);
 
     /**
      * 静态页面列表随机
