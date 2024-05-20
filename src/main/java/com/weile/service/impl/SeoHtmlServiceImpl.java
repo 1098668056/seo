@@ -28,4 +28,16 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
     public List<SeoHtml> getAllSeoHtmlRandom() {
         return seoHtmlRepository.findFirst5ByOrderByTitleDesc();
     }
+
+    @Override
+    public void updateSeo(Long id) {
+        SeoHtml seoHtml = seoHtmlRepository.findById(id).orElse(null);
+        if (seoHtml!=null&&seoHtml.getQueryCount()!=null){
+            seoHtml.setQueryCount(seoHtml.getQueryCount()+1);
+            seoHtmlRepository.save(seoHtml);
+        }else if (seoHtml!=null&&seoHtml.getQueryCount()==null){
+            seoHtml.setQueryCount(1L);
+            seoHtmlRepository.save(seoHtml);
+        }
+    }
 }

@@ -4,19 +4,13 @@ import com.weile.config.ApiException;
 import com.weile.domain.HtmlBehavior;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.HtmlBehaviorRepository;
-import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.SeoHtmlService;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.support.HttpRequestHandlerServlet;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
-import java.util.List;
 
 @Controller
 public class SeoHtmlController {
@@ -53,5 +47,10 @@ public class SeoHtmlController {
             throw new ApiException("未获取到类型");
         }
         return "http://www.mirror-era.cn";
+    }
+
+    @GetMapping("/seo/count/{id}")
+    public void queryCount(@PathVariable(value = "id" )Long id){
+        seoHtmlService.updateSeo(id);
     }
 }

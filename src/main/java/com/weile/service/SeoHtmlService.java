@@ -17,5 +17,7 @@ public interface SeoHtmlService {
      */
     List<SeoHtml> getAllSeoHtmlRandom();
 
+    void updateSeo(Long id);
+
 
 }

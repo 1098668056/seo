@@ -66,19 +66,20 @@
             <div th:each="seoHtml : ${seoHtmlList}" class="content_catag_container">
                 <article class="excerpt excerpt-1">
                 <p class="focus">
-                    <a class="thumbnail" th:href="@{${seoHtml.url}}">
+                    <a class="thumbnail" th:href="@{${seoHtml.url}}" onclick="updateCount(${seoHtml.id})">
             <span class="item">
                 <span class="thumb-span"><span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span></span>
             </span>
                     </a>
                 </p >
-                <header>
-                    <a class="cat" th:href="@{${seoHtml.url}}">文章</a >
-                    <h2><a th:href="@{${seoHtml.url}}" th:title="${seoHtml.title}" th:text="${seoHtml.title}"></a ></h2>
-                </header>
+                    <header>
+                        <p th:text="'ID: '+ ${seoHtml.id}"></p>
+                        <a class="cat" href="#" onclick="updateCount(${seoHtml.id})">文章</a >
+                        <h2><a th:href="@{${seoHtml.url}}" th:title="${seoHtml.title}" th:text="${seoHtml.title}"></a ></h2>
+                    </header>
                 <p class="meta">
                     <time><i class="fa fa-clock-o" th:text="${seoHtml.createTime}"></i></time>
-                    <span class="pv"><i class="fa fa-eye"></i>阅读(99)</span>
+                    <span class="pv"><i class="fa fa-eye"></i>阅读(<i th:text="${seoHtml.getQueryCount()}"></i>)</span>
                     <span class="pc"><i class="fa fa-comments-o"></i>评论(66)</span>
                 </p >
                 <p class="note" th:text="${seoHtml.description}"></p >
@@ -156,6 +157,24 @@
         }
     </script>
     <script src="//s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js"></script>
+    <script>
+        function updateCount(id) {
+            fetch(`/seo/count/${id}`, {
+                method: 'GET'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('查询次数已更新');
+                        // 此处可以根据需要执行其他操作
+                    } else {
+                        console.error('更新查询次数失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('更新查询次数时出错:', error);
+                });
+        }
+    </script>
 </div>
 </body>
 </html>

@@ -22,6 +22,7 @@ public class SeoHtml implements Serializable {
     private String url = "http://www.mirror-era.cn";
     private String fileName;
     private Date createTime;
+    private Long queryCount;
 
     public Long getId() {
         return id;
@@ -87,7 +88,15 @@ public class SeoHtml implements Serializable {
         this.createTime = createTime;
     }
 
-    public SeoHtml(Long id, String title, String description, String keywords, String content, String url, String fileName, Date createTime) {
+    public Long getQueryCount() {
+        return queryCount;
+    }
+
+    public void setQueryCount(Long queryCount) {
+        this.queryCount = queryCount;
+    }
+
+    public SeoHtml(Long id, String title, String description, String keywords, String content, String url, String fileName, Date createTime, Long queryCount) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -96,6 +105,7 @@ public class SeoHtml implements Serializable {
         this.url = url;
         this.fileName = fileName;
         this.createTime = createTime;
+        this.queryCount = queryCount;
     }
 
     public SeoHtml() {
@@ -111,6 +121,8 @@ public class SeoHtml implements Serializable {
                 ", content='" + content + '\'' +
                 ", url='" + url + '\'' +
                 ", fileName='" + fileName + '\'' +
+                ", createTime=" + createTime +
+                ", queryCount=" + queryCount +
                 '}';
     }
 }
