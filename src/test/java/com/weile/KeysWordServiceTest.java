@@ -3,6 +3,7 @@ package com.weile;
 import cn.hutool.core.util.RandomUtil;
 import com.weile.client.KeyWordClient;
 import com.weile.client.Response.KeysResp;
+import com.weile.client.Response.TdkGenerateResp;
 import com.weile.client.Response.WordResp;
 import com.weile.domain.KeyWords;
 import com.weile.repository.KeyWordsRepository;
@@ -10,12 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import javax.annotation.Resource;
-import java.awt.geom.RectangularShape;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @Author: xwl
@@ -66,4 +66,29 @@ public class KeysWordServiceTest {
         int i = keyWordsRepository.countByUseCountEquals(0);
         System.out.println("i = " + i);
     }
+    @Test
+    public void tdkGenerate(){
+        TdkGenerateResp tdkGenerateResp = keyWordClient.generateTdk("自助下单平台", "dy下单");
+        System.out.println("tdkGenerateResp = " + tdkGenerateResp);
+        String data = tdkGenerateResp.getData();
+        String[] split = data.split("keywords:/\n/\n");
+
+    }
+
+    public static void main(String[] args) {
+       String str =  "title:\n\n自助下单平台-便捷dy下单服务\n\nmeta description:\n\n寻找专业的自助下单平台？在这里您可以享受便捷的dy下单服务,快速提升dy号人气和业务效果。\n\nmeta keywords:\n\n自助下单平台,dy下单,dy粉丝下单,dy业务下单,dy号自助下单,dy评论下单,dy赞下单,dy秒刷服务";
+        // 定义正则表达式模式
+        Pattern pattern = Pattern.compile("(title|meta description|meta keywords):\\s*\\n\\n(.*?)(?=\\n\\n(meta (description|keywords):|$))", Pattern.CASE_INSENSITIVE);
+
+        // 创建matcher对象
+        Matcher matcher = pattern.matcher(str);
+
+        // 进行查找并输出结果
+        while (matcher.find()) {
+            String key = matcher.group(1); // 提取关键字：title, meta description, meta keywords
+            String value = matcher.group(2); // 提取对应的值
+            System.out.println(key + ": " + value);
+        }
+    }
+
 }

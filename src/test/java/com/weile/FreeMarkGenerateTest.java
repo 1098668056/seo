@@ -40,9 +40,9 @@ public class FreeMarkGenerateTest {
     public void onlyTest()
     {
         List<KeyWords> all = keyWordsRepository.findAll();
-            String pinyin = PinyinUtil.getPinyin("小熊代刷网");
+            String pinyin = PinyinUtil.getPinyin("dy自助下单");
             String resultStr = pinyin.replaceAll(" ", "");
-            String result = htmlViewService.onlyHtml(resultStr, "小熊代刷网");
+            String result = htmlViewService.onlyHtml(resultStr, "dy自助下单");
             System.out.println("result = " + result);
     }
     @Test
@@ -52,8 +52,7 @@ public class FreeMarkGenerateTest {
         System.out.println("first1ByIdAfterOrderById = " + first1ByIdAfterOrderById);
     }
     @Test
-    public void afterTest()
-    {
+    public void afterTest() {
         SeoHtml first1ByIdAfterOrderById = seoHtmlRepository.findFirst1ByIdBeforeOrderByIdDesc(10L).orElse(new SeoHtml());
         System.out.println("first1ByIdAfterOrderById = " + first1ByIdAfterOrderById);
 

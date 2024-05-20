@@ -248,7 +248,7 @@
         $(document).ready(function() {
             App.init();
         });
-        fetch('http://seo.mirror-era.cn/count/click/${id}')
+        fetch('https://count.jxjfdl.cn/count/click/${id}')
             .then(response => response.text())
             .then(html => {
                 // 在这里处理获取到的 HTML 内容
