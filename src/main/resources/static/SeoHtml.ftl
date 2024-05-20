@@ -93,6 +93,7 @@
         <!-- begin container -->
         <div class="container">
             <h2 class="content-title">${descriptions}</h2>
+            <p style="text-align: center;"><i class="fa fa-calendar-alt"></i> 发布时间：${createTime}<i class="fa fa-eye" ></i> 浏览量：${showCount}</p>
             <p class="content-desc">${content}</p>
             <!-- begin row -->
             <div class="row">

@@ -1,6 +1,9 @@
 package com.weile.service.impl;
 
 
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.RandomUtil;
 import com.weile.client.BaiduSiteClient;
 import com.weile.config.MinIOConfigProperties;
 import com.weile.domain.SeoHtml;
@@ -16,7 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.xml.crypto.Data;
 import java.io.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -88,6 +93,8 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
         params.put("lastTitle", before.getTitle());
         params.put("lastUrl", before.getUrl());
         params.put("id",seoHtmlDb.getId());
+        params.put("createTime", DateUtil.format(new Date(),"yyyy-MM-dd HH:mm:ss"));
+        params.put("showCount", RandomUtil.randomInt(10,1000));
         return params;
     }
 }
