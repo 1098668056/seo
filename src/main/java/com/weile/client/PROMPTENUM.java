@@ -25,7 +25,19 @@ public enum PROMPTENUM {
     /**
      * openai的bean
      */
-    OPENAI_BEAN("openai");
+    OPENAI_BEAN("openai"),
+    /**
+     * USER-AGENT
+     */
+    USER_AGENT("User-Agent"),
+    /**
+     * x-real-ip
+     */
+    REAL_IP("x-real-ip"),
+    /**
+     * webSite
+     */
+    WEB_SITE_URL("http://jxjfdl.cn");
 
     private final String name;
 

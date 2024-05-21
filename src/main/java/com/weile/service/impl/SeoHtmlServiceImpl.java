@@ -1,12 +1,14 @@
 package com.weile.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.weile.domain.HtmlBehavior;
 import com.weile.domain.SeoHtml;
 import com.weile.domain.vo.SeoHtmlVO;
 import com.weile.repository.HtmlBehaviorRepository;
 import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.SeoHtmlService;
 import org.springframework.data.domain.*;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,6 +20,7 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
     private SeoHtmlRepository seoHtmlRepository;
     @Resource
     private HtmlBehaviorRepository htmlBehaviorRepository;
+
 
 
     @Override
@@ -46,5 +49,16 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
             seoHtml.setQueryCount(1L);
             seoHtmlRepository.save(seoHtml);
         }
+    }
+
+    /**
+     * 保存单页访问
+     *
+     * @param htmlBehavior
+     */
+    @Async
+    @Override
+    public void saveBehavior(HtmlBehavior htmlBehavior) {
+        htmlBehaviorRepository.save(htmlBehavior);
     }
 }

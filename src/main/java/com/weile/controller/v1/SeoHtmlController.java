@@ -1,10 +1,8 @@
 package com.weile.controller.v1;
 
-import com.weile.config.ApiException;
+import com.weile.client.PROMPTENUM;
 import com.weile.domain.HtmlBehavior;
-import com.weile.domain.SeoHtml;
 import com.weile.domain.vo.SeoHtmlVO;
-import com.weile.repository.HtmlBehaviorRepository;
 import com.weile.service.SeoHtmlService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -17,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 public class SeoHtmlController {
     @Resource
     private SeoHtmlService seoHtmlService;
-    @Resource
-    private HtmlBehaviorRepository htmlBehaviorRepository;
 
     @GetMapping("/seo/index")
     public String getSeoHtmlList(@RequestParam(value = "pageNum",defaultValue = "0") int pageNum, Model model){
@@ -40,14 +36,10 @@ public class SeoHtmlController {
     @ResponseBody
     @CrossOrigin
     public String count(@PathVariable(value = "id" )Long id, HttpServletRequest request){
-        String userAgent = request.getHeader("User-Agent");
-        String ip = request.getHeader("x-real-ip");
-        try {
-            htmlBehaviorRepository.save(new HtmlBehavior(null,id,1L,1L,userAgent,ip));
-        } catch (Exception e) {
-            throw new ApiException("未获取到类型");
-        }
-        return "http://www.mirror-era.cn";
+        String userAgent = request.getHeader(PROMPTENUM.USER_AGENT.getName());
+        String ip = request.getHeader(PROMPTENUM.REAL_IP.getName());
+        seoHtmlService.saveBehavior(new HtmlBehavior(null,id,1L,1L,userAgent,ip));
+        return PROMPTENUM.WEB_SITE_URL.getName();
     }
 
     @GetMapping("/seo/count/{id}")
