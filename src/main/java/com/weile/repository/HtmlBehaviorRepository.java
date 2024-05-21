@@ -1,5 +1,6 @@
 package com.weile.repository;
 
+import com.weile.domain.HtmlBehavior;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @Description:
  **/
 @Repository
-public interface HtmlBehaviorRepository extends JpaRepository<com.weile.domain.HtmlBehavior,Long> {
+public interface HtmlBehaviorRepository extends JpaRepository<HtmlBehavior,Long> {
     /**
      * 根据id统计条数
      * @param htmlId

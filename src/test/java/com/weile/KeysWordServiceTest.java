@@ -1,6 +1,9 @@
 package com.weile;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.extra.spring.SpringUtil;
+import com.weile.client.GptClient;
+import com.weile.client.GptType;
 import com.weile.client.KeyWordClient;
 import com.weile.client.Response.KeysResp;
 import com.weile.client.Response.TdkGenerateResp;
@@ -11,6 +14,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.thymeleaf.spring5.context.SpringContextUtils;
+
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,10 @@ public class KeysWordServiceTest {
     private KeyWordClient keyWordClient;
     @Resource
     private KeyWordsRepository keyWordsRepository;
+    @Resource
+    private GptType gptType;
+    @Resource
+    private GptClient  gptClient;
     @Test
     public void keysTest(){
         KeysResp resp = keyWordClient.getKeyWords("自助下单平台",1);
@@ -89,6 +98,12 @@ public class KeysWordServiceTest {
             String value = matcher.group(2); // 提取对应的值
             System.out.println(key + ": " + value);
         }
+    }
+    @Test
+    public void  getContent(){
+        gptType.setGptClient(SpringUtil.getBean("openai"));
+        String resp = gptType.processGpt("dy粉丝下单", 100);
+        System.out.println("resp = " + resp);
     }
 
 }

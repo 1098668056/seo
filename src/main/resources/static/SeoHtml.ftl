@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <meta name="author" content="QQ代刷网">
     <meta name="keywords" content="${keywords}">
-    <meta name="description" content="${descriptions}">
+    <meta name="description" content="${description5s}">
     <meta content="123" name="author">
     <script src="https://jxjfdl.cn/html/template/hm.js"></script>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->

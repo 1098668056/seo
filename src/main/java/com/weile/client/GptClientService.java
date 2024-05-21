@@ -7,6 +7,7 @@ import com.weile.client.Response.GptResp;
 import com.weile.client.request.ContentRequest;
 import com.weile.client.request.GptParamRequest;
 import io.github.qingmo.json.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,8 @@ import java.util.Collections;
  * @Date: 2024/5/12 22:15
  * @Description:
  **/
-@Service
+@Service(value = "openai")
+@Slf4j
 public class GptClientService implements GptClient{
     @Value(value = "${gpt.url}")
     private  String gptUrl;
@@ -36,6 +38,7 @@ public class GptClientService implements GptClient{
                 .body(JSONUtil.toJsonStr(gptParamRequest)).execute(true);
         //todo 调用htmlSeo接口将content传递生成
         GptResp gptResp = JSON.parseObject(respContent.body(), GptResp.class);
+        log.info("gptResp:{}",gptResp);
         return gptResp.getChoices().get(0).getMessage().getContent();
     }
 }
