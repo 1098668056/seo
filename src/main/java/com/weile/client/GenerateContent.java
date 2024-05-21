@@ -5,7 +5,7 @@ package com.weile.client;
  * @Date: 2024/5/12 22:15
  * @Description:
  **/
-public interface GptClient {
+public interface GenerateContent {
     /**
      * 通过关键词生成对应的内容
      * @param keyWords 关键词

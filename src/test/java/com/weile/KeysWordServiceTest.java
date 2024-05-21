@@ -2,9 +2,10 @@ package com.weile;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.extra.spring.SpringUtil;
-import com.weile.client.GptClient;
-import com.weile.client.GptType;
+import com.weile.client.GenerateContent;
+import com.weile.client.GptTypeClient;
 import com.weile.client.KeyWordClient;
+import com.weile.client.PROMPTENUM;
 import com.weile.client.Response.KeysResp;
 import com.weile.client.Response.TdkGenerateResp;
 import com.weile.client.Response.WordResp;
@@ -14,7 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.thymeleaf.spring5.context.SpringContextUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -35,9 +35,7 @@ public class KeysWordServiceTest {
     @Resource
     private KeyWordsRepository keyWordsRepository;
     @Resource
-    private GptType gptType;
-    @Resource
-    private GptClient  gptClient;
+    private GptTypeClient gptTypeClient;
     @Test
     public void keysTest(){
         KeysResp resp = keyWordClient.getKeyWords("自助下单平台",1);
@@ -101,8 +99,8 @@ public class KeysWordServiceTest {
     }
     @Test
     public void  getContent(){
-        gptType.setGptClient(SpringUtil.getBean("openai"));
-        String resp = gptType.processGpt("dy粉丝下单", 100);
+        gptTypeClient.setGenerateContent(SpringUtil.getBean(PROMPTENUM.KIMI_BEAN.getName()));
+        String resp = gptTypeClient.processGpt("自助下单平台百度有哪些关键词呢", 100);
         System.out.println("resp = " + resp);
     }
 

@@ -20,7 +20,7 @@ import java.util.Collections;
  **/
 @Service(value = "openai")
 @Slf4j
-public class GptClientService implements GptClient{
+public class OpenAiService implements GenerateContent {
     @Value(value = "${gpt.url}")
     private  String gptUrl;
     @Value(value = "${gpt.token}")
@@ -30,7 +30,7 @@ public class GptClientService implements GptClient{
         ContentRequest contentRequest = new ContentRequest();
         contentRequest.setRole("user");
         //todo 查询数据库词库数据表通过生成TDK
-        contentRequest.setContent(keyWords+"大概"+contentLength+"字左右");
+        contentRequest.setContent(keyWords+PROMPTENUM.OPENAI_DESC.getName());
         GptParamRequest gptParamRequest = new GptParamRequest();
         gptParamRequest.setMessages(Collections.singletonList(contentRequest));
         HttpResponse respContent = HttpUtil.createPost(gptUrl).header("Content-Type", "application/json")

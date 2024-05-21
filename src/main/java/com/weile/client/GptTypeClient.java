@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @Data
-public class GptType {
-    private GptClient gptClient;
+public class GptTypeClient {
+    private GenerateContent generateContent;
 
     public String processGpt(String keyWords,Integer contentLength)
     {
-        return gptClient.processGpt(keyWords,contentLength);
+        return generateContent.processGpt(keyWords,contentLength);
     }
 
 }

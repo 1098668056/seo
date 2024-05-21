@@ -11,10 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListResourceBundle;
 
 /**
  * @Author: xwl
@@ -24,7 +22,7 @@ import java.util.ListResourceBundle;
 @Service(value = "kimi")
 @Slf4j
 @Primary
-public class KiMiClientService implements GptClient {
+public class KiMiService implements GenerateContent {
     @Value("${kimi.key}")
     private String key;
     @Value("${kimi.url}")
@@ -41,11 +39,12 @@ public class KiMiClientService implements GptClient {
         List<MessageCount> list = new ArrayList<>();
         MessageCount message = new MessageCount();
         message.setRole("user");
-        message.setContent(keyWords+"。大概"+contentLength+"字");
+        message.setContent(keyWords+PROMPTENUM.KIMI_DESC.getName());
         list.add(message);
         HttpResponse resp = HttpUtil.createPost(url).header("Authorization", key)
                 .body(JSONUtil.toJsonStr(new KMiRequest("moonshot-v1-8k", list, 0.3, false))).execute();
-        log.info("kimiResp{}",resp);
+        log.info("kimiResp{}",resp.body());
         return JSON.parseObject(resp.body(), KiMiResp.class).getChoices().get(0).getMessage().getContent();
     }
+
 }

@@ -1,7 +1,7 @@
 package com.weile.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
-import com.weile.client.GptClient;
+import com.weile.client.GenerateContent;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.KeyWordsRepository;
 import com.weile.service.GenerateSeoHtmlService;
@@ -23,11 +23,11 @@ public class HtmlViewServiceImpl implements HtmlViewService {
     @Resource
     private KeyWordsRepository keyWordsRepository;
     @Resource
-    GptClient gptClient;
+    GenerateContent generateContent;
     @Override
     public String onlyHtml(String fileName,String keyWords) {
         SeoHtml seoHtml = new SeoHtml();
-        String content = gptClient.processGpt(keyWords, 200);
+        String content = generateContent.processGpt(keyWords, 200);
         seoHtml.setUrl(fileName);
         seoHtml.setFileName(fileName);
         String[] desc = content.split("。");
