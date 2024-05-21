@@ -1,7 +1,5 @@
 package com.weile.service.impl;
 
-
-import cn.hutool.core.date.DateUnit;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.weile.client.BaiduSiteClient;
@@ -14,17 +12,13 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * @Author: xwl
@@ -68,7 +62,7 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
 
             InputStream in = new ByteArrayInputStream(out.toString().getBytes());
 
-            url = fileStorageService.uploadHtmlFile("", seoHtml.getFileName() + ".html", in);
+            url = fileStorageService.uploadHtmlFile("", seoHtml.getId() + ".html", in);
 
             url = url.replace(minIOConfigProperties.getReadPath(), minIOConfigProperties.getAliasPath());
         } catch (Exception e) {
@@ -77,6 +71,7 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
 
         baiduSiteClient.submitUrl(url);
         seoHtml.setUrl(url);
+        //统计改词
         seoHtmlRepository.save(seoHtml);
         return url;
     }
@@ -84,6 +79,7 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
     @NotNull
     private  Map<String, Object> getStringObjectMap(SeoHtml seoHtml) {
         SeoHtml seoHtmlDb = seoHtmlRepository.save(seoHtml);
+
         SeoHtml before = seoHtmlRepository.findFirst1ByIdBeforeOrderByIdDesc(seoHtmlDb.getId()).orElse(new SeoHtml());
         Map<String, Object> params = new HashMap<>(16);
         params.put("title", seoHtml.getTitle());

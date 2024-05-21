@@ -37,7 +37,18 @@ public enum PROMPTENUM {
     /**
      * webSite
      */
-    WEB_SITE_URL("http://jxjfdl.cn");
+    WEB_SITE_URL("http://jxjfdl.cn"),
+    /**
+     * 副词
+     */
+    TDK_DEPUTY("自助下单"),
+    /**
+     * regex
+     */
+    KEYWORD_REGEX("(title|meta description|meta keywords):\\s*\\n(.*?)(?=\\n\\n(meta (description|keywords):|$)|$)"),
+    KEYWORD_PREFIX_TITLE("title"),
+    KEYWORD_PREFIX_META_DESCRIPTION("meta description"),
+    KEYWORD_PREFIX_META_KEYWORDS("meta keywords");
 
     private final String name;
 

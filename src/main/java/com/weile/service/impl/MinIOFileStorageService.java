@@ -43,10 +43,10 @@ public class MinIOFileStorageService implements FileStorageService {
         if(!StringUtils.isEmpty(dirPath)){
             stringBuilder.append(dirPath).append(separator);
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        String todayStr = sdf.format(new Date());
-        stringBuilder.append(todayStr).append(separator);
-        stringBuilder.append(filename);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//        String todayStr = sdf.format(new Date());
+//        stringBuilder.append(todayStr).append(separator);
+//        stringBuilder.append(filename);
         return stringBuilder.toString();
     }
 
@@ -73,7 +73,6 @@ public class MinIOFileStorageService implements FileStorageService {
             urlPath.append(filePath);
             return urlPath.toString();
         }catch (Exception ex){
-
             throw new RuntimeException("上传文件失败");
         }
     }

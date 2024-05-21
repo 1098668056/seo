@@ -26,10 +26,6 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 public class FreeMarkGenerateTest {
     @Resource
-    private GenerateSeoHtmlService generateSeoHtmlService;
-    @Resource
-    private FileStorageService fileStorageService;
-    @Resource
     private KeyWordsRepository keyWordsRepository;
     @Resource
     private HtmlViewService htmlViewService;
