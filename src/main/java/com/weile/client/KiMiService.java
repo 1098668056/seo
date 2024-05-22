@@ -21,7 +21,6 @@ import java.util.List;
  **/
 @Service(value = "kimi")
 @Slf4j
-@Primary
 public class KiMiService implements GenerateContent {
     @Value("${kimi.key}")
     private String key;

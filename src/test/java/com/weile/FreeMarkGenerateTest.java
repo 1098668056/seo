@@ -1,6 +1,7 @@
 package com.weile;
 
 import cn.hutool.extra.pinyin.PinyinUtil;
+import cn.hutool.http.HttpUtil;
 import com.weile.domain.KeyWords;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.KeyWordsRepository;
@@ -38,7 +39,7 @@ public class FreeMarkGenerateTest {
         List<KeyWords> all = keyWordsRepository.findAll();
             String pinyin = PinyinUtil.getPinyin("dy自助下单");
             String resultStr = pinyin.replaceAll(" ", "");
-            String result = htmlViewService.onlyHtml(resultStr, "dy自助下单");
+            String result = htmlViewService.onlyHtml("1", "ks自助下单");
             System.out.println("result = " + result);
     }
     @Test
@@ -52,6 +53,11 @@ public class FreeMarkGenerateTest {
         SeoHtml first1ByIdAfterOrderById = seoHtmlRepository.findFirst1ByIdBeforeOrderByIdDesc(10L).orElse(new SeoHtml());
         System.out.println("first1ByIdAfterOrderById = " + first1ByIdAfterOrderById);
 
+    }
+
+    public static void main(String[] args) {
+        String string = HttpUtil.get("https://www.baidu.com/s?ie=UTF-8&wd=代刷网");
+        System.out.println(string);
     }
 
 }

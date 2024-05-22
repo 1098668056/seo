@@ -9,6 +9,7 @@ import com.weile.client.request.GptParamRequest;
 import io.github.qingmo.json.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -20,6 +21,7 @@ import java.util.Collections;
  **/
 @Service(value = "openai")
 @Slf4j
+@Primary
 public class OpenAiService implements GenerateContent {
     @Value(value = "${gpt.url}")
     private  String gptUrl;

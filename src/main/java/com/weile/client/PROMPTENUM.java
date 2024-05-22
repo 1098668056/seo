@@ -45,10 +45,11 @@ public enum PROMPTENUM {
     /**
      * regex
      */
-    KEYWORD_REGEX("(title|meta description|meta keywords):\\s*\\n(.*?)(?=\\n\\n(meta (description|keywords):|$)|$)"),
+    KEYWORD_REGEX("(title|meta description|meta keywords)(.*?)(meta (description|keywords):|$))"),
     KEYWORD_PREFIX_TITLE("title"),
     KEYWORD_PREFIX_META_DESCRIPTION("meta description"),
-    KEYWORD_PREFIX_META_KEYWORDS("meta keywords");
+    KEYWORD_PREFIX_META_KEYWORDS("meta keywords"),
+    KEYWORD_REGEX_ENTER("\\n");
 
     private final String name;
 
