@@ -47,7 +47,7 @@ public class MinIOFileStorageService implements FileStorageService {
 //        String todayStr = sdf.format(new Date());
 //        stringBuilder.append(todayStr).append(separator);
 //        stringBuilder.append(filename);
-        return stringBuilder.toString();
+        return stringBuilder.append("html").append(separator).toString();
     }
 
     /**
@@ -86,18 +86,15 @@ public class MinIOFileStorageService implements FileStorageService {
      */
     @Override
     public String uploadHtmlFile(String prefix, String filename,InputStream inputStream) {
-        String filePath = builderFilePath(prefix, filename);
         try {
             PutObjectArgs putObjectArgs = PutObjectArgs.builder()
-                    .object(filePath)
+                    .object(filename)
                     .contentType("text/html")
                     .bucket(minIOConfigProperties.getBucket()).stream(inputStream,inputStream.available(),-1)
                     .build();
             minioClient.putObject(putObjectArgs);
             StringBuilder urlPath = new StringBuilder(minIOConfigProperties.getReadPath());
-            urlPath.append(separator+minIOConfigProperties.getBucket());
-            urlPath.append(separator);
-            urlPath.append(filePath);
+            urlPath.append(separator+minIOConfigProperties.getBucket()+separator+filename);
             return urlPath.toString();
         }catch (Exception ex){
             ex.printStackTrace();

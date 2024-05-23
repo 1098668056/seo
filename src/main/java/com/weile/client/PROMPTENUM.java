@@ -49,7 +49,11 @@ public enum PROMPTENUM {
     KEYWORD_PREFIX_TITLE("title"),
     KEYWORD_PREFIX_META_DESCRIPTION("meta description"),
     KEYWORD_PREFIX_META_KEYWORDS("meta keywords"),
-    KEYWORD_REGEX_ENTER("\\n");
+    KEYWORD_REGEX_ENTER("\\n"),
+    /**
+     * titleDemo
+     */
+    TITLE_DEMO("自助下单平台");
 
     private final String name;
 

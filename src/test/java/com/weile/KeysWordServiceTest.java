@@ -43,14 +43,6 @@ public class KeysWordServiceTest {
         System.out.println("resp = " + resp);
     }
     @Test
-    public void key3(){
-        List<String> result = keyWordsRepository.findFirstByKeyName("自助下单平台");
-        int index = RandomUtil.randomInt(0, result.size());
-        String keyName = result.get(index);
-        System.out.println("keyName = " + keyName);
-
-    }
-    @Test
     public void getKey(){
         for (int i = 0; i < 5; i++) {
             System.out.println("采集"+i+"次");
@@ -86,6 +78,13 @@ public class KeysWordServiceTest {
         gptTypeClient.setGenerateContent(SpringUtil.getBean(PROMPTENUM.KIMI_BEAN.getName()));
         String resp = gptTypeClient.processGpt("自助下单平台百度有哪些关键词呢", 100);
         System.out.println("resp = " + resp);
+    }
+    @Test
+    public void first10(){
+        List<KeyWords> key = keyWordsRepository.findTop8ByKeyNameContainingOrderByUseCountAsc("卡盟");
+        System.out.println("key = " + key);
+
+
     }
 
 }
