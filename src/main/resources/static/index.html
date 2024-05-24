@@ -50,19 +50,6 @@
                 </div>
                 <a class="left carousel-control" href="#homeslider" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a><a class="right carousel-control" href="#homeslider" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
             </div>
-<!--            <div class="content_catag_container"><h2 class="content_catag_title isKeywords font_title">文章链接</h2>-->
-<!--            <article class="excerpt excerpt-1">-->
-<!--            <p class="focus"><a class="thumbnail" href="./23866.html">-->
-<!--                <span class="item">-->
-<!--                    <span class="thumb-span"><img class="thumb" src="https://sun-mu.cn/public/assets/index/images/img1.png" style="display: inline;"></span>-->
-<!--                </span></a></p>-->
-<!--            <header><a class="cat" href="./index.php?class=">文章</a>-->
-<!--                <h2><a href="./23866.html" title="夏别代网刷下单 ">夏别代网刷下单 </a></h2>-->
-<!--            </header>-->
-<!--            <p class="meta"><time><i class="fa fa-clock-o"></i>2024-05-06 23:41:04</time><span class="pv"><i class="fa fa-eye"></i>阅读(99+)</span><span class="pc"><i class="fa fa-comments-o"></i>评论(<span class="cy_cmt_count">9+</span>)</span></p>-->
-<!--            <p class="note">夏别代网刷下单,岳帅吖自助下单平台,快手刷小红心软件,代刷快手推广</p>-->
-<!--            </article>-->
-
             <div th:each="seoHtml : ${seoHtmlList}" class="content_catag_container">
                 <article class="excerpt excerpt-1">
                 <p class="focus">
@@ -95,24 +82,12 @@
 
         <div class="widget widget-tops">
             <ul class="widget-nav">
-                <li class="">最新文章</li></ul>
-            <ul class="widget-navcontent">
-                <li class="item item-01 active" th:each="topFive :${topFives}">
-                    <ul>
-                        <li><time>推荐</time><a th:href="${topFive.url}" th:text="${topFive.title}"></a></li>
+                <li class="" >最新文章</li></ul>
+            <ul class="widget-navcontent" >
+                <li class="item item-01 active">
+                    <ul th:each="latest :${latest}">
+                        <li><time>推荐</time><a th:href="${latest.url}" th:text="${latest.title}"></a></li>
                     </ul>
-<!--                    <ul>-->
-<!--                        <li><time>推荐</time><a href="./23865.html">卡盟天马代刷网</a></li>-->
-<!--                    </ul>-->
-<!--                    <ul>-->
-<!--                        <li><time>推荐</time><a href="./23864.html">代刷个性标签网站 - 刷赞平台雷神</a></li>-->
-<!--                    </ul>-->
-<!--                    <ul>-->
-<!--                        <li><time>推荐</time><a href="./23863.html">刷评论的文本,qq网红刷赞网站,云商城自助下单平台快手</a></li>-->
-<!--                    </ul>-->
-<!--                    <ul>-->
-<!--                        <li><time>推荐</time><a href="./23862.html">空间说说赞自助下单平台 代刷乐 </a></li>-->
-<!--                    </ul>-->
                 </li>
             </ul>
         </div>
@@ -121,7 +96,7 @@
             <h3 class="widget-title">文章分类</h3>
             <div class="items">
                 <ul id="blogsort1">
-                    <li> <a href="./index.php?class=km"><i class="fa fa-windows"></i> 卡盟</a> </li><li> <a href="./index.php?class=dsw"><i class="fa fa-windows"></i> 代刷网</a> </li><li> <a href="./index.php?class=mpz"><i class="fa fa-windows"></i> 名片赞</a> </li><li> <a href="./index.php?class=kmpt"><i class="fa fa-windows"></i> 卡盟平台</a> </li><li> <a href="./index.php?class=djmpz"><i class="fa fa-windows"></i> 低价名片赞</a> </li><li> <a href="./index.php?class=seo"><i class="fa fa-windows"></i> 优化</a> </li><li> <a href="./index.php?class=ssz"><i class="fa fa-windows"></i> 说说赞</a> </li>		</ul>
+                    <li> <a href="./tage?keyWords=卡盟"><i class="fa fa-windows"></i> 卡盟</a> </li><li> <a href="./tage?keyWords=代刷网"><i class="fa fa-windows"></i> 代刷网</a> </li><li> <a href="./tage??keyWords=名片赞"><i class="fa fa-windows"></i> 名片赞</a> </li><li> <a href="./index.php?class=kmpt"><i class="fa fa-windows"></i> 卡盟平台</a> </li><li> <a href="./index.php?class=djmpz"><i class="fa fa-windows"></i> 低价名片赞</a> </li><li> <a href="./index.php?class=seo"><i class="fa fa-windows"></i> 优化</a> </li><li> <a href="./index.php?class=ssz"><i class="fa fa-windows"></i> 说说赞</a> </li>		</ul>
             </div>
         </div>
 
@@ -145,7 +120,7 @@
         <div class="container">
             <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=11111111&site=qq&menu=yes">联系</a> | <a target="_blank" href="./sitemap.xml">sitemap</a>
             <hr>
-            <a href="https://beian.miit.gov.cn/">备案号：豫ICP备14005772号-1 京ICP备14007621号-1</a></div>
+            <a href="https://beian.miit.gov.cn/">备案号：京ICP备14007621号</a></div>
     </footer>
     <script>
         function wapDh(){
@@ -154,25 +129,6 @@
                 title:'导航',
                 content:html
             });
-        }
-    </script>
-    <script src="//s1.pstatp.com/cdn/expire-1-M/layer/2.3/layer.js"></script>
-    <script>
-        function updateCount(id) {
-            fetch(`/seo/count/${id}`, {
-                method: 'GET'
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('查询次数已更新');
-                        // 此处可以根据需要执行其他操作
-                    } else {
-                        console.error('更新查询次数失败');
-                    }
-                })
-                .catch(error => {
-                    console.error('更新查询次数时出错:', error);
-                });
         }
     </script>
 </div>

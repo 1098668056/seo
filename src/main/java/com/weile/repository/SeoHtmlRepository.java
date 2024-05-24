@@ -2,7 +2,10 @@ package com.weile.repository;
 
 import com.weile.domain.SeoHtml;
 import com.weile.domain.vo.SeoHtmlVO;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +26,14 @@ public interface SeoHtmlRepository extends JpaRepository<SeoHtml,Long> {
 
     List<SeoHtml> findFirst5ByOrderByTitleDesc();
 
+
+    /**
+     * 获取最新的4条数据
+     * @return
+     */
+
+    List<SeoHtml> findFirst5ByOrderByCreateTimeDesc();
+
     /**
      * 获取前一篇文章
      * @return
@@ -35,5 +46,7 @@ public interface SeoHtmlRepository extends JpaRepository<SeoHtml,Long> {
      */
 
     Optional<SeoHtml> findFirst1ByIdAfterOrderById(Long id);
+
+    Page<SeoHtml> findByKeywordsContainingOrderByCreateTimeDesc(String keyWords, Pageable pageable);
 
 }

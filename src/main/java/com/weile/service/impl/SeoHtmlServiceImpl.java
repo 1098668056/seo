@@ -61,4 +61,33 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
     public void saveBehavior(HtmlBehavior htmlBehavior) {
         htmlBehaviorRepository.save(htmlBehavior);
     }
+
+    /**
+     * 获取最新文章列表
+     *
+     * @return
+     */
+    @Override
+    public List<SeoHtml> getLatestSeoHtml() {
+        return seoHtmlRepository.findFirst5ByOrderByCreateTimeDesc();
+    }
+
+    /**
+     * 根据关键词查询列表
+     *
+     * @param pageNum
+     * @param keyWords
+     * @return
+     */
+    @Override
+    public Page<SeoHtmlVO> getAllSeoHtmlBykeyWords(int pageNum, String keyWords) {
+        Pageable pageable = PageRequest.of(pageNum, 5, Sort.Direction.DESC,"createTime");
+//        Page<SeoHtml> all = seoHtmlRepository.findAll(Example.of(SeoHtml.builder().keywords(keyWords).build()),pageable);
+        Page<SeoHtml> all = seoHtmlRepository.findByKeywordsContainingOrderByCreateTimeDesc(keyWords, pageable);
+        List<SeoHtmlVO> seoHtmlVos = BeanUtil.copyToList(all.getContent(), SeoHtmlVO.class);
+        seoHtmlVos.forEach(o->{
+            o.setSource(htmlBehaviorRepository.countByHtmlId(o.getId()));
+        });
+        return new PageImpl<>(seoHtmlVos, pageable, all.getTotalElements());
+    }
 }

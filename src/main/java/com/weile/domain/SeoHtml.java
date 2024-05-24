@@ -1,5 +1,7 @@
 package com.weile.domain;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,6 +13,7 @@ import java.util.Date;
  **/
 @Entity
 @Table(name = "html")
+@Builder
 public class SeoHtml implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

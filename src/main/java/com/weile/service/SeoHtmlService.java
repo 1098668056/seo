@@ -28,5 +28,18 @@ public interface SeoHtmlService {
 
     void saveBehavior(HtmlBehavior htmlBehavior);
 
+    /**
+     * 获取最新文章列表
+     * @return
+     */
 
+    List<SeoHtml> getLatestSeoHtml();
+
+    /**
+     * 根据关键词查询列表
+     * @param pageNum
+     * @param keyWords
+     * @return
+     */
+    Page<SeoHtmlVO> getAllSeoHtmlBykeyWords(int pageNum, String keyWords);
 }

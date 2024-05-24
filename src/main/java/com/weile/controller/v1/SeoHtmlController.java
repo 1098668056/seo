@@ -25,7 +25,17 @@ public class SeoHtmlController {
         //todo 增加推荐字段
         model.addAttribute("topFives",null);
         model.addAttribute("seoListRandom",seoHtmlService.getAllSeoHtmlRandom());
+        model.addAttribute("latest",seoHtmlService.getLatestSeoHtml());
         return "index";
+    }
+    @GetMapping("/seo/tage")
+    public String getSeoHtmlList(@RequestParam(value = "pageNum",defaultValue = "0") int pageNum,
+                                 @RequestParam(value = "keyWords",defaultValue = "卡盟") String keyWords, Model model){
+        Page<SeoHtmlVO> allSeoHtml = seoHtmlService.getAllSeoHtmlBykeyWords(pageNum,keyWords);
+        model.addAttribute("seoHtmlList",allSeoHtml.getContent());
+        model.addAttribute("currentPage",(pageNum));
+        model.addAttribute("totalPage",(allSeoHtml.getTotalPages()-1));
+        return "tage";
     }
 
     /**
