@@ -29,13 +29,13 @@ public class LongTailWordUtils {
             StringBuilder stringBuilder = new StringBuilder();
             for (KeyWords keyWord : keyWords) {
                 keyWord.setUseCount(keyWord.getUseCount()+1);
-                stringBuilder.append(keyWord.getKeyName()).append(",");
+                stringBuilder.append(title).append(keyWord.getKeyName()).append(",");
             }
             //use完毕更新次数
             keyWordsRepository.saveAll(keyWords);
             return stringBuilder.toString();
         }else {
-            return null;
+            return title;
         }
     }
 
@@ -50,10 +50,10 @@ public class LongTailWordUtils {
         if (!keyWords.isEmpty()) {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < 4; i++) {
-                stringBuilder.append(keyWords.get(i).getKeyName()).append("_");
+                stringBuilder.append(title).append("-").append(keyWords.get(i).getKeyName()).append("_");
             }
             return stringBuilder.toString();
         }
-        return PROMPTENUM.TITLE_DEMO.getName();
+        return title;
     }
 }

@@ -39,7 +39,7 @@ public class FreeMarkGenerateTest {
         List<KeyWords> all = keyWordsRepository.findAll();
             String pinyin = PinyinUtil.getPinyin("dy自助下单");
             String resultStr = pinyin.replaceAll(" ", "");
-            String result = htmlViewService.onlyHtml("1", "ks自助下单");
+            String result = htmlViewService.onlyHtml("1", "抖音业务下单24小时(DouYin24Hours)-");
             System.out.println("result = " + result);
     }
     @Test
