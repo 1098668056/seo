@@ -16,6 +16,7 @@ import com.weile.service.GenerateSeoHtmlService;
 import com.weile.service.HtmlViewService;
 import com.weile.utils.LongTailWordUtils;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
@@ -56,8 +57,8 @@ public class HtmlViewServiceImpl implements HtmlViewService {
 
     @Async
     @Override
-    public String delOrUpdateHtml(Long id) {
+    public AsyncResult<String> delOrUpdateHtml(Long id) {
         SeoHtml seoHtml = seoHtmlRepository.findById(id).orElseThrow(()->new ApiException("id不存在"));
-        return generateSeoHtmlService.generateSeoHtml(seoHtml);
+        return new AsyncResult<>(generateSeoHtmlService.generateSeoHtml(seoHtml));
     }
 }
