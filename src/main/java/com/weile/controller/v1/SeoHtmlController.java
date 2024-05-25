@@ -26,7 +26,7 @@ public class SeoHtmlController {
         model.addAttribute("topFives",null);
         model.addAttribute("seoListRandom",seoHtmlService.getAllSeoHtmlRandom());
         model.addAttribute("latest",seoHtmlService.getLatestSeoHtml());
-        return "index";
+        return "desk/index";
     }
     @GetMapping("/seo/tage")
     public String getSeoHtmlList(@RequestParam(value = "pageNum",defaultValue = "0") int pageNum,
@@ -35,7 +35,7 @@ public class SeoHtmlController {
         model.addAttribute("seoHtmlList",allSeoHtml.getContent());
         model.addAttribute("currentPage",(pageNum));
         model.addAttribute("totalPage",(allSeoHtml.getTotalPages()-1));
-        return "tage";
+        return "desk/tage";
     }
 
     /**

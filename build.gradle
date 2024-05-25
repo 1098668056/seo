@@ -25,6 +25,7 @@ dependencies {
     implementation 'io.minio:minio:8.5.10'
     implementation 'com.google.guava:guava:30.1-jre'
     implementation files('D:/develop/repository/com/wlld/easyAi/1.1.8/easyAi-1.1.8.jar')
+    implementation 'cn.dev33:sa-token-spring-boot-starter:1.37.0'
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
     runtimeOnly 'com.mysql:mysql-connector-j'
