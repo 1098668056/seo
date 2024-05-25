@@ -8,4 +8,5 @@ package com.weile.service;
  **/
 public interface HtmlViewService {
     String onlyHtml(String fileName,String keyWords);
+    String delOrUpdateHtml(Long id);
 }

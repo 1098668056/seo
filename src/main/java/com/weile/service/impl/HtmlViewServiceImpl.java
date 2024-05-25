@@ -7,13 +7,19 @@ import com.weile.client.GptTypeClient;
 import com.weile.client.KeyWordClient;
 import com.weile.client.PROMPTENUM;
 import com.weile.client.Response.TdkGenerateResp;
+import com.weile.config.ApiException;
+import com.weile.domain.HtmlBehavior;
 import com.weile.domain.SeoHtml;
+import com.weile.repository.HtmlBehaviorRepository;
+import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.GenerateSeoHtmlService;
 import com.weile.service.HtmlViewService;
 import com.weile.utils.LongTailWordUtils;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +38,8 @@ public class HtmlViewServiceImpl implements HtmlViewService {
     private KeyWordClient keyWordClient;
     @Resource
     private LongTailWordUtils longTailWordUtils;
+    @Resource
+    private SeoHtmlRepository seoHtmlRepository;
     @Override
     public String onlyHtml(String fileName,String keyWords) {
         SeoHtml seoHtml = new SeoHtml();
@@ -43,6 +51,13 @@ public class HtmlViewServiceImpl implements HtmlViewService {
         seoHtml.setFileName(fileName);
         seoHtml.setContent(content);
         seoHtml.setCreateTime(new Date());
+        return generateSeoHtmlService.generateSeoHtml(seoHtml);
+    }
+
+    @Async
+    @Override
+    public String delOrUpdateHtml(Long id) {
+        SeoHtml seoHtml = seoHtmlRepository.findById(id).orElseThrow(()->new ApiException("id不存在"));
         return generateSeoHtmlService.generateSeoHtml(seoHtml);
     }
 }
