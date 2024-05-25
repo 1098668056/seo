@@ -64,6 +64,6 @@ public class SeoHtmlController {
         model.addAttribute("seoHtmlList",allSeoHtml.getContent());
         model.addAttribute("currentPage",(pageNum));
         model.addAttribute("totalPage",(allSeoHtml.getTotalPages()-1));
-        return "desk/article";
+        return "admin/article/article";
     }
 }
