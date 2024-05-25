@@ -20,10 +20,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/css/");
         registry.addResourceHandler("/static/fonts/**")
                 .addResourceLocations("classpath:/static/fonts/");
-        registry.addResourceHandler("/admin/img/**")
+        registry.addResourceHandler("/static/img/**")
                 .addResourceLocations("classpath:/static/img/");
         registry.addResourceHandler("/static/js/**")
                 .addResourceLocations("classpath:/static/js/");
-
     }
 }

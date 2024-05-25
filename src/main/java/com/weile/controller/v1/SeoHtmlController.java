@@ -56,4 +56,14 @@ public class SeoHtmlController {
     public void queryCount(@PathVariable(value = "id" )Long id){
         seoHtmlService.updateSeo(id);
     }
+
+
+    @GetMapping("/article/list")
+    public String getArticleList(@RequestParam(value = "pageNum",defaultValue = "0") int pageNum, Model model){
+        Page<SeoHtmlVO> allSeoHtml = seoHtmlService.getAllSeoHtml(pageNum);
+        model.addAttribute("seoHtmlList",allSeoHtml.getContent());
+        model.addAttribute("currentPage",(pageNum));
+        model.addAttribute("totalPage",(allSeoHtml.getTotalPages()-1));
+        return "desk/article";
+    }
 }
