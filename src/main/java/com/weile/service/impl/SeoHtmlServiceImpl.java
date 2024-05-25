@@ -6,9 +6,11 @@ import com.weile.domain.SeoHtml;
 import com.weile.domain.vo.SeoHtmlVO;
 import com.weile.repository.HtmlBehaviorRepository;
 import com.weile.repository.SeoHtmlRepository;
+import com.weile.service.HtmlViewService;
 import com.weile.service.SeoHtmlService;
 import org.springframework.data.domain.*;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,6 +22,8 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
     private SeoHtmlRepository seoHtmlRepository;
     @Resource
     private HtmlBehaviorRepository htmlBehaviorRepository;
+    @Resource
+    private HtmlViewService htmlViewService;
 
 
 
@@ -89,5 +93,27 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
             o.setSource(htmlBehaviorRepository.countByHtmlId(o.getId()));
         });
         return new PageImpl<>(seoHtmlVos, pageable, all.getTotalElements());
+    }
+
+    /**
+     * 根据id查询详情
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public SeoHtml getSeoHtmlById(Long id) {
+        return seoHtmlRepository.getById(id);
+    }
+
+    /**
+     * 更新内容
+     *
+     * @param seoHtml
+     */
+    @Override
+    public void updateSeoHtml(SeoHtml seoHtml) {
+        SeoHtml save = seoHtmlRepository.save(seoHtml);
+        AsyncResult<String> stringAsyncResult = htmlViewService.delOrUpdateHtml(save.getId());
     }
 }

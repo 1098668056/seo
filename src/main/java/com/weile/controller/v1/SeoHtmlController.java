@@ -2,6 +2,7 @@ package com.weile.controller.v1;
 
 import com.weile.client.PROMPTENUM;
 import com.weile.domain.HtmlBehavior;
+import com.weile.domain.SeoHtml;
 import com.weile.domain.vo.SeoHtmlVO;
 import com.weile.service.SeoHtmlService;
 import org.springframework.data.domain.Page;
@@ -66,4 +67,15 @@ public class SeoHtmlController {
         model.addAttribute("totalPage",(allSeoHtml.getTotalPages()-1));
         return "admin/article/article";
     }
+    @GetMapping("/article/detail")
+    public String detail(@RequestParam(value = "id")Long id,Model model){
+        model.addAttribute("seoHtml",seoHtmlService.getSeoHtmlById(id));
+        return "admin/article/articleUpdate";
+    }
+    @PostMapping("/article/update")
+    public String update(SeoHtml seoHtml){
+        seoHtmlService.updateSeoHtml(seoHtml);
+        return "redirect:home.html";
+    }
+
 }

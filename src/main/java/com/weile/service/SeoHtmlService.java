@@ -42,4 +42,18 @@ public interface SeoHtmlService {
      * @return
      */
     Page<SeoHtmlVO> getAllSeoHtmlBykeyWords(int pageNum, String keyWords);
+
+    /**
+     * 根据id查询详情
+     * @param id
+     * @return
+     */
+    SeoHtml getSeoHtmlById(Long id);
+
+    /**
+     * 更新内容
+     * @param seoHtml
+     */
+
+    void  updateSeoHtml(SeoHtml seoHtml);
 }

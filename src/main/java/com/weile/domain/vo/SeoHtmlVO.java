@@ -17,4 +17,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SeoHtmlVO extends SeoHtml implements Serializable {
     private Long source;
+    private String errorPath;
 }
