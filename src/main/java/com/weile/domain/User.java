@@ -27,6 +27,7 @@ public class User implements Serializable{
     private Long id;
     private String name;
     private Integer age;
+    private String password;
 
     public Long getId() {
         return id;
@@ -52,12 +53,21 @@ public class User implements Serializable{
         this.age = age;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

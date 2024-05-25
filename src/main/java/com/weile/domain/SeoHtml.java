@@ -13,7 +13,6 @@ import java.util.Date;
  **/
 @Entity
 @Table(name = "html")
-@Builder
 public class SeoHtml implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
