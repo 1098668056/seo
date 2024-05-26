@@ -77,4 +77,10 @@ public class SeoHtmlController {
         seoHtmlService.updateSeoHtml(seoHtml);
         return "redirect:/article/list";
     }
+
+    @PostMapping("/article/user/save")
+    public String save(SeoHtml seoHtml){
+        seoHtmlService.addSoHtml(seoHtml);
+        return "redirect:/article/list";
+    }
 }

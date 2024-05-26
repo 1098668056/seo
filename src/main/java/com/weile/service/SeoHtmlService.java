@@ -56,4 +56,6 @@ public interface SeoHtmlService {
      */
 
     void  updateSeoHtml(SeoHtml seoHtml);
+
+    void addSoHtml(SeoHtml seoHtml);
 }

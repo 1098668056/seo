@@ -120,4 +120,9 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
         this.htmlViewService.delOrUpdateHtml(seoHtml.getId());
 
     }
+
+    @Override
+    public void addSoHtml(SeoHtml seoHtml) {
+        seoHtmlRepository.save(seoHtml);
+    }
 }
