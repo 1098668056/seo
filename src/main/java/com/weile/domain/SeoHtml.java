@@ -1,6 +1,8 @@
 package com.weile.domain;
 
 import lombok.Builder;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +15,8 @@ import java.util.Date;
  **/
 @Entity
 @Table(name = "html")
+@DynamicUpdate
+@SelectBeforeUpdate
 public class SeoHtml implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +26,9 @@ public class SeoHtml implements Serializable {
     private String keywords;
     private String content;
     private String url = "http://www.mirror-era.cn";
+    @Column(updatable = false)
     private String fileName;
+    @Column(updatable = false)
     private Date createTime;
     private Long queryCount;
 

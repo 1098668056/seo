@@ -1,6 +1,7 @@
 package com.weile.service;
 
 
+import com.google.common.util.concurrent.ListenableFutureTask;
 import org.springframework.scheduling.annotation.AsyncResult;
 
 /**
@@ -16,5 +17,5 @@ public interface HtmlViewService {
      * @param id
      * @return
      */
-    AsyncResult<String> delOrUpdateHtml(Long id);
+    void  delOrUpdateHtml(Long id);
 }

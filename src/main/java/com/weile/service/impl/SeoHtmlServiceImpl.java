@@ -8,12 +8,14 @@ import com.weile.repository.HtmlBehaviorRepository;
 import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.HtmlViewService;
 import com.weile.service.SeoHtmlService;
+import com.weile.utils.JpaUtil;
 import org.springframework.data.domain.*;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SeoHtmlServiceImpl implements SeoHtmlService {
@@ -113,7 +115,7 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
      */
     @Override
     public void updateSeoHtml(SeoHtml seoHtml) {
-        SeoHtml save = seoHtmlRepository.save(seoHtml);
-        AsyncResult<String> stringAsyncResult = htmlViewService.delOrUpdateHtml(save.getId());
+        seoHtmlRepository.save(seoHtml);
+
     }
 }

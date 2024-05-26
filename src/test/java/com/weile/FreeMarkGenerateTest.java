@@ -9,6 +9,7 @@ import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.FileStorageService;
 import com.weile.service.GenerateSeoHtmlService;
 import com.weile.service.HtmlViewService;
+import com.weile.service.SeoHtmlService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,6 +33,8 @@ public class FreeMarkGenerateTest {
     private HtmlViewService htmlViewService;
     @Resource
     private SeoHtmlRepository seoHtmlRepository;
+    @Resource
+    private SeoHtmlService service;
 
     @Test
     public void onlyTest()
@@ -58,6 +61,18 @@ public class FreeMarkGenerateTest {
     public static void main(String[] args) {
         String string = HttpUtil.get("https://www.baidu.com/s?ie=UTF-8&wd=代刷网");
         System.out.println(string);
+    }
+    @Test
+    public  void update(){
+        SeoHtml seoHtml = new SeoHtml();
+        seoHtml.setId(60000L);
+        seoHtml.setTitle("测试更新");
+        seoHtml.setKeywords("测试标题");
+        seoHtml.setContent("测试文本");
+        seoHtml.setDescription("测试描述");
+        seoHtml.setQueryCount(111111L);
+        this.service.updateSeoHtml(seoHtml);
+
     }
 
 }

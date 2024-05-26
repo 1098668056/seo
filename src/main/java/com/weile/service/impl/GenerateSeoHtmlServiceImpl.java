@@ -10,6 +10,7 @@ import com.weile.service.FileStorageService;
 import com.weile.service.GenerateSeoHtmlService;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

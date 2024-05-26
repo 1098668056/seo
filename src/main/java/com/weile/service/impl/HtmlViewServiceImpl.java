@@ -2,6 +2,7 @@ package com.weile.service.impl;
 
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.google.common.util.concurrent.ListenableFutureTask;
 import com.weile.client.GptTypeClient;
 import com.weile.client.PROMPTENUM;
 import com.weile.config.ApiException;
@@ -47,8 +48,8 @@ public class HtmlViewServiceImpl implements HtmlViewService {
 
     @Async
     @Override
-    public AsyncResult<String> delOrUpdateHtml(Long id) {
+    public void delOrUpdateHtml(Long id) {
         SeoHtml seoHtml = seoHtmlRepository.findById(id).orElseThrow(()->new ApiException("id不存在"));
-        return new AsyncResult<>(generateSeoHtmlService.generateSeoHtml(seoHtml));
+        generateSeoHtmlService.generateSeoHtml(seoHtml);
     }
 }
