@@ -6,6 +6,7 @@ import com.weile.domain.SeoHtml;
 import com.weile.domain.vo.SeoHtmlVO;
 import com.weile.repository.HtmlBehaviorRepository;
 import com.weile.repository.SeoHtmlRepository;
+import com.weile.service.GenerateSeoHtmlService;
 import com.weile.service.HtmlViewService;
 import com.weile.service.SeoHtmlService;
 import com.weile.utils.JpaUtil;
@@ -116,6 +117,7 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
     @Override
     public void updateSeoHtml(SeoHtml seoHtml) {
         seoHtmlRepository.save(seoHtml);
+        this.htmlViewService.delOrUpdateHtml(seoHtml.getId());
 
     }
 }
