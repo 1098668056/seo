@@ -61,9 +61,4 @@ public class UserController {
         StpUtil.logout();
         return "admin/login";
     }
-    @PostMapping("/article/update")
-    public String update(SeoHtml seoHtml){
-        seoHtmlService.updateSeoHtml(seoHtml);
-        return "redirect:home.html";
-    }
 }
