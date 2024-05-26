@@ -72,10 +72,4 @@ public class SeoHtmlController {
         model.addAttribute("seoHtml",seoHtmlService.getSeoHtmlById(id));
         return "admin/article/articleUpdate";
     }
-    @PostMapping("/article/update")
-    public String update(SeoHtml seoHtml){
-        seoHtmlService.updateSeoHtml(seoHtml);
-        return "redirect:home.html";
-    }
-
 }

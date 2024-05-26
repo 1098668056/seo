@@ -3,11 +3,13 @@ package com.weile.controller.v1;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.weile.config.ApiException;
+import com.weile.domain.SeoHtml;
 import com.weile.domain.SysMenu;
 import com.weile.domain.User;
 import com.weile.domain.vo.MenuShowVO;
 import com.weile.repository.SysMeunRepository;
 import com.weile.repository.UserRepository;
+import com.weile.service.SeoHtmlService;
 import com.weile.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,8 @@ public class UserController {
     private UserRepository userRepository;
     @Resource
     private UserService userService;
+    @Resource
+    private SeoHtmlService seoHtmlService;
     @GetMapping("/login/index")
     public String  loginIndex(Model model){
         return "admin/login";
@@ -56,5 +60,10 @@ public class UserController {
     public String  logOut(Model model){
         StpUtil.logout();
         return "admin/login";
+    }
+    @PostMapping("/article/update")
+    public String update(SeoHtml seoHtml){
+        seoHtmlService.updateSeoHtml(seoHtml);
+        return "redirect:home.html";
     }
 }
