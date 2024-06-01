@@ -2,25 +2,25 @@
 <html lang="en"><!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${title}国内领先的自助下单平台</title>
+    <title>${title}-国内领先的自助下单平台</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <meta name="author" content="QQ代刷网">
     <meta name="keywords" content="${keywords}">
     <meta name="description" content="${descriptions}">
     <meta content="123" name="author">
-    <script src="https://jxjfdl.cn/html/template/hm.js"></script>
+    <script src="./template/hm.js"></script>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="https://jxjfdl.cn/html/template/bootstrap.min.css" rel="stylesheet">
-    <link href="https://jxjfdl.cn/html/template/font-awesome.min.css" rel="stylesheet">
-    <link href="https://jxjfdl.cn/html/template/animate.min.css" rel="stylesheet">
-    <link href="https://jxjfdl.cn/html/template/style.min.css" rel="stylesheet">
-    <link href="https://jxjfdl.cn/html/template/style-responsive.min.css" rel="stylesheet">
-    <link href="https://jxjfdl.cn/html/template/blue.css" id="theme" rel="stylesheet">
-    <link href="https://jxjfdl.cn/html/template/all.min.css" rel="stylesheet">
+    <link href="./template/bootstrap.min.css" rel="stylesheet">
+    <link href="./template/font-awesome.min.css" rel="stylesheet">
+    <link href="./template/animate.min.css" rel="stylesheet">
+    <link href="./template/style.min.css" rel="stylesheet">
+    <link href="./template/style-responsive.min.css" rel="stylesheet">
+    <link href="./template/blue.css" id="theme" rel="stylesheet">
+    <link href="./template/all.min.css" rel="stylesheet">
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="https://jxjfdl.cn/html/template/pace.min.js"></script>
+    <script src="./template/pace.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
 </head>
@@ -72,7 +72,7 @@
     <div id="home" class="content has-bg home" style="height: 703px;">
         <!-- begin content-bg -->
         <div class="content-bg">
-            <img src="https://jxjfdl.cn/html/template/seo.jpg" alt="Home">
+            <img src="./template/seo.jpg" alt="Home">
         </div>
         <!-- end content-bg -->
         <!-- begin container -->
@@ -183,7 +183,7 @@
                     <!-- begin team -->
                     <div class="team">
                         <div class="image flipInX contentAnimated finishAnimated" data-animation="true" data-animation-type="flipInX">
-                            <img src="https://jxjfdl.cn/html/template/true.jpg" alt="刷赞网站">
+                            <img src="./template/true.jpg" alt="刷赞网站">
                         </div>
                         <div class="info">
                             <h3 class="name">平台售后客服</h3>
@@ -232,17 +232,17 @@
     <!-- end #page-container -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="https://jxjfdl.cn/html/template/jquery-1.9.1.min.js"></script>
-    <script src="https://jxjfdl.cn/html/template/jquery-migrate-1.1.0.min.js"></script>
-    <script src="https://jxjfdl.cn/html/template/bootstrap.min.js"></script>
+    <script src="./template/jquery-1.9.1.min.js"></script>
+    <script src="./template/jquery-migrate-1.1.0.min.js"></script>
+    <script src="./template/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
-    <script src="static/js/html5shiv.js"></script>
-    <script src="static/js/respond.min.js"></script>
-    <script src="static/js/excanvas.min.js"></script>
+    <script src="./template/html5shiv.js"></script>
+    <script src="./template/respond.min.js"></script>
+    <script src="./template/excanvas.min.js"></script>
     <![endif]-->
-    <script src="https://jxjfdl.cn/html/template/jquery.cookie.js"></script>
-    <script src="https://jxjfdl.cn/html/template/scrollmonitor.js"></script>
-    <script src="https://jxjfdl.cn/html/template/apps.min.js"></script>
+    <script src="./template/jquery.cookie.js"></script>
+    <script src="./template/scrollmonitor.js"></script>
+    <script src="./template/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
     <script>
         $(document).ready(function() {

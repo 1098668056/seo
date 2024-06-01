@@ -83,4 +83,8 @@ public class SeoHtmlController {
         seoHtmlService.addSoHtml(seoHtml);
         return "redirect:/article/list";
     }
+    @GetMapping("/article/add")
+    public String save(Model model){
+        return "admin/article/articleSave";
+    }
 }
