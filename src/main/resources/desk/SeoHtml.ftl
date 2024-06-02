@@ -58,8 +58,8 @@
             <!-- begin navbar-collapse -->
             <div class="collapse navbar-collapse" id="header-navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=""><a href="https://jxjfdl.cn/seo/index">网站首页</a> </li>
-                    <li class="active"><a href="https://jxjfdl.cn/seo/index">官方简介</a> </li>
+                    <li class=""><a href="https://jxjfdl.cn">网站首页</a> </li>
+                    <li class="active"><a href="https://jxjfdl.cn">官方简介</a> </li>
                 </ul>
             </div>
             <!-- end navbar-collapse -->

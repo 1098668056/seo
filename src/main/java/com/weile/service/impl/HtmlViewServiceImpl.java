@@ -37,9 +37,9 @@ public class HtmlViewServiceImpl implements HtmlViewService {
         SeoHtml seoHtml = new SeoHtml();
         gptTypeClient.setGenerateContent(SpringUtil.getBean(PROMPTENUM.OPENAI_BEAN.getName()));
         String content = gptTypeClient.processGpt(keyWords, 200);
-        seoHtml.setTitle(longTailWordUtils.generateTitle(keyWords));
+        seoHtml.setTitle(keyWords);
         seoHtml.setDescription(content.split("。")[0]);
-        seoHtml.setKeywords(longTailWordUtils.generateKeyWords(keyWords));
+        seoHtml.setKeywords(keyWords);
         seoHtml.setFileName(fileName);
         seoHtml.setContent(content);
         seoHtml.setCreateTime(new Date());

@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,7 +48,7 @@ public class KeysWordServiceTest {
         for (int i = 0; i < 5; i++) {
             System.out.println("采集"+i+"次");
             List<KeyWords> lists = new ArrayList<>();
-            KeysResp resp = keyWordClient.getKeyWords("自助下单平台",1);
+            KeysResp resp = keyWordClient.getKeyWords("卡盟",1);
             for (WordResp wordResp : resp.getData().getWord()) {
                 KeyWords keyWords = new KeyWords();
                 keyWords.setKeyName(wordResp.getKeyword());
@@ -84,6 +85,10 @@ public class KeysWordServiceTest {
         List<KeyWords> key = keyWordsRepository.findTop8ByKeyNameContainingOrderByUseCountAsc("卡盟");
         System.out.println("key = " + key);
 
+
+    }
+    @Test
+    public void batchGenerateHtml(){
 
     }
 

@@ -73,7 +73,7 @@
             </article>
             </div>
                 <br>
-                <a th:href="@{/seo/index(pageNum=${currentPage + 1})}" style="border-radius:10px;" th:class="${totalPage <= currentPage ? 'hidden' :'btn btn-info pull-right' }">下一页<li th:class="${totalPage <= currentPage ? 'hidden' :'fa fa-arrow-circle-o-right fa-fw' }"></li></a>
+                <a th:href="@{/(pageNum=${currentPage + 1})}" style="border-radius:10px;" th:class="${totalPage <= currentPage ? 'hidden' :'btn btn-info pull-right' }">下一页<li th:class="${totalPage <= currentPage ? 'hidden' :'fa fa-arrow-circle-o-right fa-fw' }"></li></a>
             <br>
         </div>
     </div>

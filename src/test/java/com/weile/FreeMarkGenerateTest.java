@@ -40,10 +40,12 @@ public class FreeMarkGenerateTest {
     public void onlyTest()
     {
         List<KeyWords> all = keyWordsRepository.findAll();
-            String pinyin = PinyinUtil.getPinyin("抖音24小时");
-            String resultStr = pinyin.replaceAll(" ", "");
-            String result = htmlViewService.onlyHtml("1", "抖音业务24小时");
+//            String pinyin = PinyinUtil.getPinyin("抖音24小时");
+//            String resultStr = pinyin.replaceAll(" ", "");
+        for (KeyWords keyWords : all) {
+            String result = htmlViewService.onlyHtml("1", keyWords.getKeyName());
             System.out.println("result = " + result);
+        }
     }
     @Test
     public void beforeTest()
