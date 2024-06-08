@@ -89,7 +89,7 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
         params.put("content", seoHtml.getContent());
         params.put("lastTitle", before.getTitle());
         params.put("lastUrl", before.getUrl());
-        params.put("id",seoHtmlDb.getId());
+        params.put("id",seoHtmlDb.getId().toString());
         params.put("createTime", DateUtil.format(new Date(),"yyyy-MM-dd HH:mm:ss"));
         params.put("showCount", RandomUtil.randomInt(10,1000));
         return params;
