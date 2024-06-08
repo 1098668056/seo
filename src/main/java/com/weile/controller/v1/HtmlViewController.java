@@ -28,6 +28,6 @@ public class HtmlViewController {
     @ResponseBody
     public String generateSeoHtml(@PathVariable("fileName") String fileName, @PathVariable("key") String keyWord){
         System.out.println(keyWord);
-        return htmlViewService.onlyHtml(fileName,keyWord);
+        return htmlViewService.onlyHtml(fileName,"",keyWord);
     }
 }

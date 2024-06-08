@@ -33,11 +33,11 @@ public class HtmlViewServiceImpl implements HtmlViewService {
     @Resource
     private SeoHtmlRepository seoHtmlRepository;
     @Override
-    public String onlyHtml(String fileName,String keyWords) {
+    public String onlyHtml(String fileName,String title,String keyWords) {
         SeoHtml seoHtml = new SeoHtml();
         gptTypeClient.setGenerateContent(SpringUtil.getBean(PROMPTENUM.OPENAI_BEAN.getName()));
-        String content = gptTypeClient.processGpt(keyWords, 200);
-        seoHtml.setTitle(keyWords);
+        String content = gptTypeClient.processGpt(keyWords.split(",")[0], 200);
+        seoHtml.setTitle(title);
         seoHtml.setDescription(content.split("。")[0]);
         seoHtml.setKeywords(keyWords);
         seoHtml.setFileName(fileName);
@@ -51,5 +51,15 @@ public class HtmlViewServiceImpl implements HtmlViewService {
     public void delOrUpdateHtml(Long id) {
         SeoHtml seoHtml = seoHtmlRepository.findById(id).orElseThrow(()->new ApiException("id不存在"));
         generateSeoHtmlService.generateSeoHtml(seoHtml);
+    }
+
+    /**
+     * 生成网站地图
+     *
+     * @param count
+     */
+    @Override
+    public void generateSiteMaps(Long count) {
+
     }
 }

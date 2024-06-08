@@ -21,4 +21,10 @@ public interface KeyWordsRepository extends JpaRepository<KeyWords,Long> {
 
     List<KeyWords> findTop8ByKeyNameContainingOrderByUseCountAsc(String keyName);
 
+    List<KeyWords> findByIdGreaterThan(Long id);
+    /**
+     * 查询未使用过的关键词
+     */
+    List<KeyWords> findFirst3ByUseCountEquals(Integer useCount);
+
 }

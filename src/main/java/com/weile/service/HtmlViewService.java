@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.AsyncResult;
  * @Description:
  **/
 public interface HtmlViewService {
-    String onlyHtml(String fileName,String keyWords);
+    String onlyHtml(String fileName,String title,String keywords);
 
     /**
      * 增加异步返回删除或者修改静态文件接口
@@ -18,4 +18,10 @@ public interface HtmlViewService {
      * @return
      */
     void  delOrUpdateHtml(Long id);
+
+    /**
+     * 生成网站地图
+     * @param count
+     */
+    void generateSiteMaps(Long count);
 }

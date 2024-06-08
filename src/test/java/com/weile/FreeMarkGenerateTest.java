@@ -13,6 +13,7 @@ import com.weile.service.SeoHtmlService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -39,11 +40,11 @@ public class FreeMarkGenerateTest {
     @Test
     public void onlyTest()
     {
-        List<KeyWords> all = keyWordsRepository.findAll();
+        List<KeyWords> all = keyWordsRepository.findByIdGreaterThan(5000L);
 //            String pinyin = PinyinUtil.getPinyin("抖音24小时");
 //            String resultStr = pinyin.replaceAll(" ", "");
         for (KeyWords keyWords : all) {
-            String result = htmlViewService.onlyHtml("1", keyWords.getKeyName());
+            String result = htmlViewService.onlyHtml("1", keyWords.getKeyName(),"");
             System.out.println("result = " + result);
         }
     }

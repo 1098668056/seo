@@ -89,7 +89,8 @@ public class KeysWordServiceTest {
     }
     @Test
     public void batchGenerateHtml(){
-
+        KeyWords firstByUseCountEquals = keyWordsRepository.findFirstByUseCountEquals(0);
+        System.out.println("firstByUseCountEquals = " + firstByUseCountEquals);
     }
 
 }
