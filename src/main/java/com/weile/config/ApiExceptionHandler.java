@@ -36,6 +36,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NotLoginException.class)
     public String notLoginException(NotLoginException e, Model model) {
         log.error("用户未登录");
-        return "redirect:/admin/login/index";
+        return "redirect:/";
     }
 }

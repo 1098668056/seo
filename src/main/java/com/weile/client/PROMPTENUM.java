@@ -37,7 +37,7 @@ public enum PROMPTENUM {
     /**
      * webSite
      */
-    WEB_SITE_URL("http://jxjfdl.cn"),
+    WEB_SITE_URL("https://yhji.nsywnwnegtbse.top:54515/shop_777/"),
     /**
      * 副词
      */

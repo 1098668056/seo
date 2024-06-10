@@ -4,13 +4,13 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.weile.client.BaiduSiteClient;
 import com.weile.config.MinIOConfigProperties;
+import com.weile.config.WebSiteInfoProperties;
 import com.weile.domain.SeoHtml;
 import com.weile.repository.SeoHtmlRepository;
 import com.weile.service.FileStorageService;
 import com.weile.service.GenerateSeoHtmlService;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +39,8 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
     private MinIOConfigProperties minIOConfigProperties;
     @Resource
     private BaiduSiteClient baiduSiteClient;
+    @Resource
+    private WebSiteInfoProperties webSiteInfoProperties;
     /**
      * 生成seo单页html
      *
@@ -84,7 +86,11 @@ public class GenerateSeoHtmlServiceImpl implements GenerateSeoHtmlService {
         SeoHtml before = seoHtmlRepository.findFirst1ByIdBeforeOrderByIdDesc(seoHtmlDb.getId()).orElse(new SeoHtml());
         Map<String, Object> params = new HashMap<>(16);
         params.put("title", seoHtml.getTitle());
+        //获取第一个关键词进行展示
+        params.put("titleFirst", seoHtml.getTitle().split("_")[0]);
         params.put("descriptions", seoHtml.getDescription());
+        params.put("webSiteUrl", webSiteInfoProperties.getUrl());
+        params.put("webSiteCount", webSiteInfoProperties.getCount());
         params.put("keywords", seoHtml.getKeywords());
         params.put("content", seoHtml.getContent());
         params.put("lastTitle", before.getTitle());

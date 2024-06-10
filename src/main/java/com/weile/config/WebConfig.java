@@ -16,6 +16,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/desk");
         registry.addResourceHandler("/admin/**")
                 .addResourceLocations("classpath:/admin");
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/static/css/**")
                 .addResourceLocations("classpath:/static/css/");
         registry.addResourceHandler("/static/fonts/**")
@@ -24,5 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/img/");
         registry.addResourceHandler("/static/js/**")
                 .addResourceLocations("classpath:/static/js/");
+        registry.addResourceHandler("/favicon.ico")
+                .addResourceLocations("classpath:/static/favicon.ico");
     }
 }

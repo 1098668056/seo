@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Configuration
 public class SaTokenConfigure implements WebMvcConfigurer {
@@ -19,7 +18,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
         registry.addInterceptor(new SaInterceptor(handle -> {
             //校验是否登录
             SaRouter.match("/**").check(o -> StpUtil.checkLogin());
-        })).excludePathPatterns("/admin/login/index","/admin/login","/static/css/**", "/static/js/**", "/static/img/**", "/static/fonts/**", "/static/docs/**","/seo/**","/desk/favicon.ico");
+        })).excludePathPatterns("/count/**","/admin/login/index","/static/*","/admin/login","/static/css/**", "/static/js/**", "/static/img/**", "/static/fonts/**", "/static/docs/**","/seo/**", "/favicon.ico");
     }
 
     /**

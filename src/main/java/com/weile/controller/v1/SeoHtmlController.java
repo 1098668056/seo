@@ -1,6 +1,7 @@
 package com.weile.controller.v1;
 
 import com.weile.client.PROMPTENUM;
+import com.weile.config.WebSiteInfoProperties;
 import com.weile.domain.HtmlBehavior;
 import com.weile.domain.SeoHtml;
 import com.weile.domain.vo.SeoHtmlVO;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 public class SeoHtmlController {
     @Resource
     private SeoHtmlService seoHtmlService;
+    @Resource
+    private WebSiteInfoProperties webSiteInfoProperties;
 
     @GetMapping("/seo/index")
     public String getSeoHtmlList(@RequestParam(value = "pageNum",defaultValue = "0") int pageNum, Model model){
@@ -27,6 +30,7 @@ public class SeoHtmlController {
         model.addAttribute("topFives",null);
         model.addAttribute("seoListRandom",seoHtmlService.getAllSeoHtmlRandom());
         model.addAttribute("latest",seoHtmlService.getLatestSeoHtml());
+        model.addAttribute("webSiteInfo",webSiteInfoProperties);
         return "desk/index";
     }
     @GetMapping("/seo/tage")

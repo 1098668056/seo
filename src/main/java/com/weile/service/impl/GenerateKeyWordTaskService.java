@@ -61,6 +61,7 @@ public class GenerateKeyWordTaskService implements GenerateKeyWordTask {
     @Scheduled(cron = "0 */5 * * * *")
     public void autoHtmlSeo(){
         List<KeyWords> keywords = keyWordsRepository.findFirst3ByUseCountEquals(0);
+        if (keywords == null || keywords.isEmpty()) {return;}
         List<String> titleSb = new ArrayList<>();
         List<String> keyWords = new ArrayList<>();
         for (KeyWords keyword : keywords) {

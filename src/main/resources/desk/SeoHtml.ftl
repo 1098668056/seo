@@ -2,9 +2,9 @@
 <html lang="en"><!--<![endif]-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${title}-国内领先的自助下单平台</title>
+    <title>${title}_【卡盟排行榜】</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <meta name="author" content="QQ代刷网">
+    <meta name="author" content="weile">
     <meta name="keywords" content="${keywords}">
     <meta name="description" content="${descriptions}">
     <meta content="123" name="author">
@@ -50,7 +50,7 @@
                 <a href="${lastUrl}" class="navbar-brand">
                     <span class="brand-logo"></span>
                     <span class="brand-text">
-                            <span class="text-theme">${title}</span>
+                            <span class="text-theme">${titleFirst}</span>
                         </span>
                 </a>
             </div>
@@ -58,8 +58,8 @@
             <!-- begin navbar-collapse -->
             <div class="collapse navbar-collapse" id="header-navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=""><a href="https://jxjfdl.cn">网站首页</a> </li>
-                    <li class="active"><a href="https://jxjfdl.cn">官方简介</a> </li>
+                    <li class=""><a href="${webSiteUrl}">网站首页</a> </li>
+                    <li class="active"><a href="#home">官方简介</a> </li>
                 </ul>
             </div>
             <!-- end navbar-collapse -->
@@ -77,7 +77,7 @@
         <!-- end content-bg -->
         <!-- begin container -->
         <div class="container home-content">
-            <h1>欢迎来到 <a href="https://upr-e.cn/archives/161960.html">${title}</a></h1>
+            <h1>欢迎来到 <a id = "target_url" target="_blank"href="#home">${title}</a></h1>
             <h3>${descriptions}</h3>
             <h4>${keywords}<br>
                 <a href="JavaScript:;" style="line-height: 45px;">百度诚信平台-口碑好-你值得信赖！</a>
@@ -103,7 +103,7 @@
                         <div class="icon bg-theme bounceIn contentAnimated finishAnimated" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
                         <div class="info">
                             <h4 class="title">平台优势</h4>
-                            <p class="desc">自助下单app软件 - 云商城24小时自助下单平台_免费领取50说说赞网址稳定、安全、值得信赖,多一份价格,多一份保障！多一份保障,多一份安心！</p>
+                            <p class="desc">${keywords}</p>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                         <div class="icon bg-theme bounceIn contentAnimated finishAnimated" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-file"></i></div>
                         <div class="info">
                             <h4 class="title">平台誓词</h4>
-                            <p class="desc">君子爱财，取之有道；诚信做事，一诺千金，严谨做事，减少失误！</p>
+                            <p class="desc">客户虐我千百遍,我爱客户如初恋</p>
                         </div>
                     </div>
                 </div>
@@ -185,11 +185,6 @@
                         <div class="image flipInX contentAnimated finishAnimated" data-animation="true" data-animation-type="flipInX">
                             <img src="./template/true.jpg" alt="刷赞网站">
                         </div>
-                        <div class="info">
-                            <h3 class="name">平台售后客服</h3>
-                            <div class="title text-theme"><a href="https://upr-e.cn/">联系客服</a></div>
-
-                        </div>
                     </div>
                     <!-- end team -->
                 </div>
@@ -209,7 +204,7 @@
             <div class="nextArticle">
                 <p>上一篇：<a href="${lastUrl}" title="${lastUrl}">${lastTitle}</a></p>
                 <p>
-                    Copyright © 2020-2024 版权所有. <a href="https://www.mirror-era.cn/sitemap.xml">sitemap</a> <br>
+                    Copyright © 2020-2024 版权所有. <a href="${webSiteUrl}/sitemap.xml">sitemap</a> <br>
                 </p>
             </div>
         </div>
@@ -248,20 +243,19 @@
         $(document).ready(function() {
             App.init();
         });
-        fetch('https://count.jxjfdl.cn/count/click/${id}')
+        fetch('https://count.${webSiteCount}/count/click/${id}')
             .then(response => response.text())
             .then(html => {
                 // 在这里处理获取到的 HTML 内容
                 var element1 = document.getElementById("result_url_1")
                 var element2 = document.getElementById("result_url_2")
+                var element3 = document.getElementById("target_url")
                 element1.href = html
                 element2.href = html
-                console.log('欢迎访问qq代刷网(www.mirror-era.cn)');
+                element3.href = html
+                console.log('欢迎访问');
             })
             .catch(error => console.error('出错了:', error));
     </script>
-
-
-
 </div>
 </body></html>
