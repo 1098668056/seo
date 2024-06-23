@@ -49,4 +49,13 @@ public interface SeoHtmlRepository extends JpaRepository<SeoHtml,Long> {
 
     Page<SeoHtml> findByKeywordsContainingOrderByCreateTimeDesc(String keyWords, Pageable pageable);
 
+    /**
+     * 根据Url提取某个站点内容
+     * @param fileName
+     * @param pageable
+     * @return
+     */
+
+    Page<SeoHtml> findByFileNameOrderByCreateTimeDesc(String fileName, Pageable pageable);
+
 }

@@ -73,8 +73,7 @@
             </article>
             </div>
                 <br>
-            <a th:href="@{/(pageNum=${currentPage - 1})}" style="border-radius:10px;" th:class="${currentPage <= 0 ? 'hidden' :'btn btn-info' }">上一页<li th:class="${totalPage <= currentPage ? 'hidden' :'fa fa-arrow-circle-o-right fa-fw' }"></li></a>
-            <a th:href="@{/(pageNum=${currentPage + 1})}" style="border-radius:10px;" th:class="${totalPage <= currentPage ? 'hidden' :'btn btn-info pull-right' }">下一页<li th:class="${totalPage <= currentPage ? 'hidden' :'fa fa-arrow-circle-o-right fa-fw' }"></li></a>
+                <a th:href="@{/(pageNum=${currentPage + 1})}" style="border-radius:10px;" th:class="${totalPage <= currentPage ? 'hidden' :'btn btn-info pull-right' }">下一页<li th:class="${totalPage <= currentPage ? 'hidden' :'fa fa-arrow-circle-o-right fa-fw' }"></li></a>
             <br>
         </div>
     </div>
@@ -121,9 +120,9 @@
         <div class="container">
             <a target="_blank" href="/seo/index">联系</a> | <a target="_blank" href="/seo/index">sitemap</a>
             <hr>
-            <a href="https://beian.miit.gov.cn/" th:text="${webSiteInfo.icp}"></a></div>
+            <a href="https://beian.miit.gov.cn/">备案号：暂未备案</a></div>
     </footer>
-    <script th:text="${webSiteInfo.indexScript}"></script>
+    <div th:text="${webSiteInfo.indexScript}"></div>
 </div>
 </body>
 </html>

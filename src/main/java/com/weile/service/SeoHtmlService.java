@@ -58,4 +58,8 @@ public interface SeoHtmlService {
     void  updateSeoHtml(SeoHtml seoHtml);
 
     void addSoHtml(SeoHtml seoHtml);
+    /**
+     * 静态页面列表
+     */
+    Page<SeoHtmlVO> findPageByFileName(String fileName,int pageNum);
 }

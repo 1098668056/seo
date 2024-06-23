@@ -126,4 +126,20 @@ public class SeoHtmlServiceImpl implements SeoHtmlService {
         SeoHtml seoHtmlResult = seoHtmlRepository.save(seoHtml);
         this.htmlViewService.delOrUpdateHtml(seoHtmlResult.getId());
     }
+
+    /**
+     * 静态页面列表
+     *
+     * @param pageNum
+     */
+    @Override
+    public Page<SeoHtmlVO> findPageByFileName(String fileName,int pageNum) {
+        PageRequest pageable = PageRequest.of(pageNum, 5, Sort.Direction.DESC, "createTime");
+        Page<SeoHtml> page = seoHtmlRepository.findByFileNameOrderByCreateTimeDesc(fileName,pageable);
+        List<SeoHtmlVO> seoHtmlVos = BeanUtil.copyToList(page.getContent(), SeoHtmlVO.class);
+        seoHtmlVos.forEach(o->{
+            o.setSource(htmlBehaviorRepository.countByHtmlId(o.getId()));
+        });
+        return new PageImpl<>(seoHtmlVos, pageable, page.getTotalElements());
+    }
 }

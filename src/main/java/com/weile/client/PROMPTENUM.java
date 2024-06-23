@@ -50,6 +50,7 @@ public enum PROMPTENUM {
     KEYWORD_PREFIX_META_DESCRIPTION("meta description"),
     KEYWORD_PREFIX_META_KEYWORDS("meta keywords"),
     KEYWORD_REGEX_ENTER("\\n"),
+    KEYWORD_PREFIX("https://"),
     /**
      * titleDemo
      */

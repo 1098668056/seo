@@ -257,5 +257,6 @@
             })
             .catch(error => console.error('出错了:', error));
     </script>
+    ${innerScript}
 </div>
 </body></html>

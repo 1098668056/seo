@@ -72,7 +72,7 @@ public class GenerateKeyWordTaskService implements GenerateKeyWordTask {
         String resultTitle = String.join("_", titleSb);
         String resultKetWords = String.join(",", keyWords);
         System.out.println("开始生成文章="+titleSb);
-        htmlViewService.onlyHtml("keywords",resultTitle,resultKetWords);
+        htmlViewService.onlyHtml("www.0201.net",resultTitle,resultKetWords);
         keyWordsRepository.saveAll(keywords);
     }
 }
